@@ -1,0 +1,227 @@
+:root {
+  --pnz-blue: #009FDF;
+  --indent-level1: 0.75cm;
+  --indent-level2: 0.75cm;
+  --indent-level3: 0.75cm;
+  --indent-hanging: 0.75cm;
+  --bullet-hanging: 0.3cm;
+
+  --tag-radius: 3px;
+  --tag-font: 'Open Sans', sans-serif;
+  --tag-padding: 2px 6px;
+  --tag-size: 10px;
+  --tag-commentary-bg: #78269B;
+  --tag-standards-bg: #78269B;
+  --tag-bestpractice-bg: #00B050;
+  --tag-text-color: #ffffff;  
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10pt;
+  line-height: 1.4;
+  color: #000;
+  margin: 2rem;
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  margin-bottom: 0.1em;
+}
+
+ul li {
+  margin-bottom: 0.1em;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0.75em;
+}
+
+h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading {
+  font-family: Rockwell, serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16pt;
+  color: var(--pnz-blue);
+  margin: 1.5em 0 1em 0;
+}
+
+.subsection-heading {
+  display: block;
+  font-family: 'Open Sans', serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: 12pt;
+  color: black;
+  margin: 1.5em 0 1em 0;
+}
+
+.clause-row {
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  gap: 1rem;
+  margin-bottom: 0rem;
+  align-items: start;
+  counter-reset: level1;
+}
+
+.clause-heading {
+  font-weight: bold;
+  margin-right: 1.5em;
+}
+
+.clause-heading::before {
+  content: attr(data-number) " ";
+}
+
+.clause-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.diagram img {
+  max-width: 100%;
+  height: auto;
+  border: 0px solid #ccc;
+  padding: 0.5rem;
+  background: #f9f9f9;
+}
+
+.numbered {
+  position: relative;
+  padding-left: var(--indent-hanging);
+  margin-bottom: 0.1em;
+}
+
+.numbered::before {
+  content: attr(data-number);
+  position: absolute;
+  width: var(--indent-hanging);
+  text-indent: calc(-1 * var(--indent-hanging));
+  display: inline-block;
+}
+
+.hanging-bullet {
+  list-style: disc inside;
+  padding-left: var(--indent-hanging);
+}
+
+.hanging-bullet>li {
+  text-indent: calc(-1 * var(--bullet-hanging));
+  padding-left: var(--bullet-hanging);
+}
+
+/* Shared styles embedded in each specific selector */
+.tag-commentary,
+.tag-standards,
+.tag-bestpractice {
+  display: block;
+  font-family: var(--tag-font);
+  font-size: var(--tag-size);
+  font-weight: bold;
+  color: var(--tag-text-color);
+  padding-top: var(--tag-padding);
+  padding-bottom: var(--tag-padding);
+  border-radius: var(--tag-radius);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Labels via ::before */
+.tag-commentary::before {
+  content: "Commentary";
+  background-color: var(--tag-commentary-bg);
+}
+.tag-standards::before {
+  content: "Standards";
+  background-color: var(--tag-standards-bg);
+}
+.tag-bestpractice::before {
+  content: "Best practice";
+   background-color: var(--tag-bestpractice-bg);
+}
+
+/* Tag visual styling applies to the pseudo-element instead */
+.tag-commentary::before,
+.tag-standards::before,
+.tag-bestpractice::before {
+  display: inline-block;
+  border-radius: var(--tag-radius);
+  padding: 0.7em;
+  margin-bottom: 0.1em;
+}
+
+/* --- Level 1: (1) --- */
+.level1 {
+  list-style: none;
+  padding-left: 0em;
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+}
+
+.level1 > li {
+  counter-increment: level1;
+  padding-left: var(--indent-level1);
+  position: relative;
+}
+
+.level1 > li::before {
+  content: "(" counter(level1) ")";
+  position: absolute;
+  left: 0;
+  width: var(--indent-level1);
+  display: inline-block;
+}
+
+/* --- Level 2: (a) --- */
+.level2 {
+  list-style: none;
+  counter-reset: level2;
+  padding-left: var(--indent-level1);
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+}
+
+.level2 > li {
+  counter-increment: level2;
+  padding-left: var(--indent-level2);
+  position: relative;
+}
+
+.level2 > li::before {
+  content: "(" counter(level2, lower-alpha) ")";
+  position: absolute;
+  left: 0;
+  width: var(--indent-level2);
+  display: inline-block;
+}
+
+/* --- Level 3: (i) --- */
+.level3 {
+  counter-reset: level3;
+  list-style: none; /* Disable default list numbering */
+  padding-left: var(--indent-level3);
+  position: relative;
+  margin-bottom: 0.1em;
+}
+
+.level3 > li {
+  counter-increment: level3;
+  padding-left: var(--indent-level3);
+  position: relative;
+}
+
+.level3 > li::before {
+  content: "(" counter(level3, lower-roman) ")";
+  position: absolute;
+  left: 0;
+  width: var(--indent-level3);
+  display: inline-block;
+}
