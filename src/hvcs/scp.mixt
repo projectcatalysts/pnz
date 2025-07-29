@@ -3,7 +3,7 @@ import [
 ]
 
 [
-	pnz::section_heading( "Chapter 1: Inter-bank SCPs" )
+	pnz::section_heading( "Chapter 1: Inter-bank SCPs for Sarah" )
 	pnz::tag_standards
 	pnz::clause(
 		"1.1"
@@ -171,6 +171,17 @@ import [
 		`It is optional for the instructing agent to offer the service of providing the debtor with a 'remitter
 		notification'.  A remitter notification service requires the instructing agent to notify the debtor that
 		the instructing agent has settled the SCP.`
+
+		`If the instructing agent offers the debtor the remitter notification service and the instructing agent is
+		required by the debtor to send a remitter notification, the instructing agent will notify the debtor that
+		the instructing agent has settled the SCP.`
+
+		`If the instructing agent sends a remitter notification under subclause (2), the instructing agent—`
+
+		pnz::level2(
+			`may only send the notification after the instructing agent has received a system message from the
+			transaction delivery system confirming settlement of the SCP; and`
+		)
 	)
 ]
 
@@ -179,8 +190,6 @@ import [
 
 1.7 Remitter notification: SCP settled
 
-(2) If the instructing agent offers the debtor the remitter notification service and the instructing agent is required by the debtor to send a remitter notification, the instructing agent will notify the debtor that the instructing agent has settled the SCP.
-(3) If the instructing agent sends a remitter notification under subclause (2), the instructing agent—
 (a) may only send the notification after the instructing agent has received a system message from the transaction delivery system confirming settlement of the SCP; and  
 (b) must ensure that the remitter notification complies with the requirements in subclauses (4) to (7). 
 (4) The instructing agent must send the remitter confirmation to the debtor as soon as practicable after the instructing agent receives the system message confirming settlement of the SCP.

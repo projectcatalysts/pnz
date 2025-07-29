@@ -1,2 +1,1 @@
-# pnz
-Payments NZ - Rules, Procedures, Documentation
+# Payments NZ - Rules, Procedures, Documentation

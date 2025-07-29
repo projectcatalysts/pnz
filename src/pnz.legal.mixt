@@ -51,7 +51,8 @@ import [
 		html::class( "tag-commentary", "" )
 	)
 
-	// pnz.legal::clause creates standards clause div
+	// pnz.legal::clause creates a clause with a header in the left column
+	// clauses numbered with the style (1) (2)
 	pnz.legal::clause = (id as text, heading as text, ...content as any) => #( div = 
 		html::class(
 			"clause-row",
@@ -67,12 +68,12 @@ import [
 		)
 	)
 
-	// pnz.legal::level2 creates standards clause div
+	// pnz.legal::level2 creates indented clauses numbered with the style (a) (b)
 	pnz.legal::level2 = (...content as any) => #( ol = 
 		html::class( "level2", content )
 	)
 
-	// pnz.legal::level3 creates standards clause div
+	// pnz.legal::level3 creates indented clauses numbered with the style (i) (ii)
 	pnz.legal::level3 = (...content as any) => #( ol = 
 		html::class( "level3", content )
 	)
