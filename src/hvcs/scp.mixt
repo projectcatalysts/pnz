@@ -167,6 +167,10 @@ import [
 	pnz::clause(
 		"1.7"
 		"Overview of notifications for inter-bank SCPs"
+
+		`It is optional for the instructing agent to offer the service of providing the debtor with a 'remitter
+		notification'.  A remitter notification service requires the instructing agent to notify the debtor that
+		the instructing agent has settled the SCP.`
 	)
 ]
 
@@ -175,7 +179,6 @@ import [
 
 1.7 Remitter notification: SCP settled
 
-(1) It is optional for the instructing agent to offer the service of providing the debtor with a 'remitter notification'.  A remitter notification service requires the instructing agent to notify the debtor that the instructing agent has settled the SCP.
 (2) If the instructing agent offers the debtor the remitter notification service and the instructing agent is required by the debtor to send a remitter notification, the instructing agent will notify the debtor that the instructing agent has settled the SCP.
 (3) If the instructing agent sends a remitter notification under subclause (2), the instructing agent—
 (a) may only send the notification after the instructing agent has received a system message from the transaction delivery system confirming settlement of the SCP; and  
