@@ -13,7 +13,7 @@
             <div class="clause-heading" data-number="1.1">Application of this chapter</div>
             <ol class="level1">
                 <li>This chapter applies to an SCP if the debtor and the creditor are customers of different
-			participants where the SCP is settled using the transaction delivery system.</li>
+		participants where the SCP is settled using the transaction delivery system.</li>
             </ol>
         </div>
         <h2 class="subsection-heading">SCP processing</h2>
@@ -21,22 +21,116 @@
             <div class="clause-heading" data-number="1.2">60 minute SCP</div>
             <ol class="level1">
                 <li>The instructing agent that sends an SCP and the instructed agent that receives an SCP
-			must ensure that the time period for processing the SCP is no more than 60 minutes.</li>
+		must ensure that the time period for processing the SCP is no more than 60 minutes.</li>
                 <li>For the purposes of subclause (1)—</li>
                 <ol class="level2">
                     <li>the time period commences when the instructing agent debits the debtor&apos;s account
-				with the amount of the SCP; and</li>
+			with the amount of the SCP; and</li>
                     <li>the time period ends—</li>
                     <ol class="level3">
                         <li>if the instructing agent requires the instructed agent to notify the
-					creditor that the instructed agent has credited the creditor&apos;s account
-					with the amount of the SCP (beneficiary notification), when the instructed
-					agent sends the beneficiary notification to the creditor; or</li>
+				creditor that the instructed agent has credited the creditor&apos;s account
+				with the amount of the SCP (beneficiary notification), when the instructed
+				agent sends the beneficiary notification to the creditor; or</li>
                         <li>if the instructing agent does not require the instructed agent to send the
-					creditor a beneficiary notification, when the instructed agent credits the
-					creditor&apos;s account with the amount of the SCP.</li>
+				creditor a beneficiary notification, when the instructed agent credits the
+				creditor&apos;s account with the amount of the SCP.</li>
                     </ol>
                 </ol>
+            </ol>
+        </div>
+        <div class="tag-bestpractice"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.3">Instructing agent: 30 minute processing</div>
+            <ol class="level1">
+                <li>The instructing agent should take no more than 30 minutes to process the SCP on the
+		business day that the debtor gives the instructing agent the SCP payment instruction.</li>
+                <li>For the purposes of subclause (1)—</li>
+                <ol class="level2">
+                    <li>the time period commences when the instructing agent debits the debtor&apos;s account
+			with the amount of the SCP; and</li>
+                    <li>the time period ends when the SCP settles.</li>
+                </ol>
+                <li>The best practice processing time period applies to SCP payment instructions that a
+		debtor sends to the instructing agent manually or electronically.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.4">Instructed agent: 30 minute processing</div>
+            <ol class="level1">
+                <li>The instructed agent that receives an SCP should take no more than 30 minutes to
+		process the SCP on the business day that the debtor gives the instructing agent the
+		SCP payment instruction.</li>
+                <li>For the purposes of subclause (1)—</li>
+                <ol class="level2">
+                    <li>the time period commences when the SCP settles; and</li>
+                    <li>the time period ends—</li>
+                    <ol class="level3">
+                        <li>if the instructing agent requires the instructed agent to send the creditor
+				a beneficiary notification, when the instructed agent sends the beneficiary
+				notification to the creditor; or</li>
+                        <li>if the instructing agent does not require the instructed agent to send the
+				creditor a beneficiary notification, when the instructed agent credits the
+				creditor&apos;s account with the amount of the SCP.</li>
+                    </ol>
+                </ol>
+            </ol>
+        </div>
+        <div class="tag-standards"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.5">Validating content of SCPs before sending</div>
+            <ol class="level1">
+                <li>The instructing agent must ensure that the SCP specifies one of the following to identify
+		the creditor before sending the SCP for settlement:</li>
+                <ol class="level2">
+                    <li>a BIC; or</li>
+                    <li>one of the account number types described in the applicable message standards.</li>
+                </ol>
+                <li>To comply with clause 1.5(1), the instructing agent must ensure the following before sending
+		the SCP for settlement:</li>
+                <ol class="level2">
+                    <li>if the SCP specifies a BIC for the creditor, the instructing agent:</li>
+                    <ol class="level3">
+                        <li>must ensure that the BIC contains a valid BIC (SWIFT validation); and</li>
+                        <li>is entitled to include an account number for the creditor but the instructing agent
+				is not required to validate the account number in the manner described in clause 1.5(2)(c)
+				of these SCP Procedures.</li>
+                    </ol>
+                    <li>If the SCP does not specify a BIC for the creditor and the SCP specifies a credit card number
+			or a scheme debit card number for the creditor, the instructing agent must ensure that the
+			credit card number or scheme debit card number is a valid card number in accordance with the
+			requirements in the applicable message standards.</li>
+                    <li>If the SCP does not specify a BIC for the creditor and the SCP specifies an account number for
+			the creditor, the instructing agent must ensure that the account number is a valid account
+			number by:</li>
+                    <ol class="level3">
+                        <li>performing interchange number and branch number interlock checking;</li>
+                        <li>ensuring that the account number passes check digit validation in accordance with appendix
+				3C of the SBI procedures; and</li>
+                        <li>ensuring that the format of the account number is valid in the manner set out in the
+				applicable message standards.</li>
+                    </ol>
+                    <li>If the SCP specifies the creditor&apos;s email address for a beneficiary notification, the instructing
+			agent must ensure that the format of the email address complies with the requirements set out in
+			the applicable message standards.</li>
+                    <li>The instructing agent is required to validate any other content of the SCP before sending the SCP
+			for settlement in the manner set out in the applicable message standards.</li>
+                </ol>
+            </ol>
+        </div>
+        <h2 class="subsection-heading">SCP customer notifications</h2>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.6">Overview of notifications for inter-bank SCPs</div>
+            <ol class="level1">
+                <li>A feature of the SCP product is the notifications that participants send to SCP customers on the 
+		progress of SCPs.</li>
+                <li>The following table identifies each notification type for an inter-bank SCP, the parties to the
+		notification, the progress of the SCP to which the notification relates, and the clauses that specify
+		requirements for the notification:</li>
+                <li>The Remitter notification and Remitter confirmation notifications are both intended to communicate
+		settlement to the debtor (at slightly different trigger points in the process). Participants should
+		offer only one of these notifications to customers to avoid duplication of notifications.</li>
             </ol>
         </div>
     </body>

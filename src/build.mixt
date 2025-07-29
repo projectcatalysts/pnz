@@ -1,0 +1,13 @@
+import [
+	pnz = "pnz.legal.mixt"
+	scp = "hvcs/scp.mixt"
+]
+
+let
+	document = pnz::document( scp )
+	written = File.Write(
+		"docs/hvcs/scp.html"
+		Html.FromValue( document )
+	)
+in
+	written

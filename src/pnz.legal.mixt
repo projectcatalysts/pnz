@@ -1,0 +1,79 @@
+namespace pnz.legal
+
+meta {
+}
+
+import [
+	"html.mixt"
+]
+
+{
+	// pnz.legal::document creates a PNZ legal document as HTML
+	pnz.legal::document = (content as list) => (
+		html::document(
+			"html",
+			"en",
+			[
+					;meta = html::meta( "UTF-8" )
+					title = "HVCS SCP"
+					link = html::stylesheet( "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" )
+					link = html::stylesheet( "../styles/pnz.legal.css" )
+			]		
+			html::class(
+				"document"
+				content
+			)
+		)
+	)
+
+	// pnz.legal::section_heading creates a section heading
+	pnz.legal::section_heading = (content as any) => #( h1 =
+		html::class( "section-heading", content )
+	)
+
+	// pnz.legal::subsection_heading creates a sub-section heading
+	pnz.legal::subsection_heading = (content as any) => #( h2 = 
+		html::class( "subsection-heading", content )
+	)
+
+	// pnz.legal::tag_standards creates standards tag
+	pnz.legal::tag_standards = #( div = 
+		html::class( "tag-standards", "" )
+	)
+
+	// pnz.legal::tag_bestpractice creates bestpractice tag
+	pnz.legal::tag_bestpractice = #( div = 
+		html::class( "tag-bestpractice", "" )
+	)
+
+	// pnz.legal::tag_commentary creates commentary tag
+	pnz.legal::tag_commentary = #( div = 
+		html::class( "tag-commentary", "" )
+	)
+
+	// pnz.legal::clause creates standards clause div
+	pnz.legal::clause = (id as text, heading as text, ...content as any) => #( div = 
+		html::class(
+			"clause-row",
+			[
+				div = {
+					html::attributes = {
+						class = "clause-heading"
+						data-number = id
+					}
+				} @> heading
+				ol = html::class( "level1", content )
+			]
+		)
+	)
+
+	// pnz.legal::level2 creates standards clause div
+	pnz.legal::level2 = (...content as any) => #( ol = 
+		html::class( "level2", content )
+	)
+
+	// pnz.legal::level3 creates standards clause div
+	pnz.legal::level3 = (...content as any) => #( ol = 
+		html::class( "level3", content )
+	)
+}
