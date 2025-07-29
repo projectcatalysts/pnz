@@ -181,6 +181,8 @@ import [
 		pnz::level2(
 			`may only send the notification after the instructing agent has received a system message from the
 			transaction delivery system confirming settlement of the SCP; and`
+
+			`must ensure that the remitter notification complies with the requirements in subclauses (4) to (7).`
 		)
 	)
 ]
@@ -190,8 +192,7 @@ import [
 
 1.7 Remitter notification: SCP settled
 
-(a) may only send the notification after the instructing agent has received a system message from the transaction delivery system confirming settlement of the SCP; and  
-(b) must ensure that the remitter notification complies with the requirements in subclauses (4) to (7). 
+(b)  
 (4) The instructing agent must send the remitter confirmation to the debtor as soon as practicable after the instructing agent receives the system message confirming settlement of the SCP.
 (5) The instructing agent must send the remitter confirmation to the debtor by email.
 (6) If the instructing agent tries to notify the debtor using an email address but the email is not delivered (because, for example, the email address is not valid), the instructing agent is not required to—
