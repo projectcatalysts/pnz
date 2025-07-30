@@ -77,4 +77,48 @@ import [
 	pnz.legal::level3 = (...content as any) => #( ol = 
 		html::class( "level3", content )
 	)
+
+	pnz.legal::table = (content as table) => #( table = 
+		html::class( "pnz-table", content )
+	)
+
+	pnz.legal::br = #( br = null )
+
+	pnz.legal::nonumber = (...content as any) => #( div = content )
+
+	// pnz.legal::rowspan adds a rowspan attribute to table data
+	pnz.legal::rowspan = (rowCount as UInt64.Type) => {
+		html::attributes = {
+			rowspan = rowCount
+		}
+	}
+
+	// pnz.legal::colspan adds a colspan attribute to table data
+	pnz.legal::colspan = (colCount as UInt64.Type) => {
+		html::attributes = {
+			colspan = colCount
+		}
+	}
+
+	// pnz.legal::rowcolspan adds a rowspan and colspan attribute to table data
+	pnz.legal::rowcolspan = (rowCount as UInt64.Type, colCount as UInt64.Type) => {
+		html::attributes = {
+			rowspan = rowCount
+			colspan = colCount
+		}
+	}
+
+	pnz.legal::image = (src as text, alt as text) => #( div =
+		html::class(
+			"diagram"
+			{
+				img = {
+					html::attributes = {
+						src = src
+						alt = alt
+					}
+				} @> ""
+			}
+		)
+	)
 }

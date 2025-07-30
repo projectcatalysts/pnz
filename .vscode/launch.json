@@ -18,6 +18,21 @@
 				"mixt",
 				"--pretty"
 			]
+		},
+		{
+			"name": "View MIXT Definition",
+			"type": "mixt",
+			"request": "launch",
+			"mode": "run",
+			"program": "${file}",
+			"mixtFlags": [
+				"--logNoPid",
+				"--logLevel",
+				"Info",
+				"--format",
+				"mixt",
+				"--pretty"
+			]
 		},	
 	]
 }

@@ -3,15 +3,16 @@ import [
 ]
 
 [
-	pnz::section_heading( "Chapter 1: Inter-bank SCPs for Sarah" )
+	pnz::section_heading( "Chapter 1: Inter-bank SCPs" )
 	pnz::tag_standards
 	pnz::clause(
 		"1.1"
 		"Application of this chapter"
 
-		// TODO: Remove numbering from the next paragraph
-		`This chapter applies to an SCP if the debtor and the creditor are customers of different
-		participants where the SCP is settled using the transaction delivery system.`
+		pnz::nonumber(
+			`This chapter applies to an SCP if the debtor and the creditor are customers of different
+			participants where the SCP is settled using the transaction delivery system.`
+		)
 	)
 	pnz::subsection_heading( "SCP processing" )
 	pnz::clause(
@@ -153,17 +154,61 @@ import [
 		notification, the progress of the SCP to which the notification relates, and the clauses that specify
 		requirements for the notification:`
 
-		// TODO: Insert table here
+		pnz::table(
+			#table(
+				[
+					"Type"
+					"Parties"
+					"Progress"
+					"Mandatory / Optional"
+					"Clauses"
+				]
+				[
+					[
+						"Remitter notification"
+						"Instructing agent to debtor"
+						"HVCS payment settled" <@ pnz::rowspan(2)
+						"Optional"
+						"1.7"
+					]
+					[
+						"Sending confirmation"
+						"Instructing agent to creditor"
+						""                       // Empty progress cell
+						"Optional"
+						"1.8"
+					]
+					[
+						"Remitter confirmation"
+						"Instructing agent to debtor"
+						"Payment message delivered"
+						"Optional"
+						"1.9"
+					]
+					[
+						"Beneficiary notification"
+						"Instructed agent to creditor"
+						"HVCS payment credited"
+						"Mandatory"
+						"1.10"
+					]
+				]
+			)
+		)
 
 		`The Remitter notification and Remitter confirmation notifications are both intended to communicate
 		settlement to the debtor (at slightly different trigger points in the process). Participants should
 		offer only one of these notifications to customers to avoid duplication of notifications.`
 
-		// TODO: Remove numbering from the next paragraph
-		`The following diagram shows when the notification is sent for an inter-bank SCP:`
-		// TODO: Insert picture here
+		pnz::nonumber(
+			pnz::br
+			`The following diagram shows when the notification is sent for an inter-bank SCP:`
+		)
+
+		pnz::image( "images/hvcs_scp_notifications.png", "SCP Notifications" )
 	)
 
+	pnz::tag_standards
 	pnz::clause(
 		"1.7"
 		"Overview of notifications for inter-bank SCPs"
@@ -184,168 +229,338 @@ import [
 
 			`must ensure that the remitter notification complies with the requirements in subclauses (4) to (7).`
 		)
+
+		`The instructing agent must send the remitter confirmation to the debtor as soon as practicable after the
+		 instructing agent receives the system message confirming settlement of the SCP.`
+
+		`The instructing agent must send the remitter confirmation to the debtor by email.`
+
+		`If the instructing agent tries to notify the debtor using an email address but the email is not delivered
+		(because, for example, the email address is not valid), the instructing agent is not required to—`
+
+		pnz::level2(
+			`try to use the email address again to notify the debtor; or`
+			`arrange to use another method of notification.`
+		)
+
+		`The instructing agent must ensure that the remitter notification contains the following as a minimum:`
+
+		pnz::level2(
+			`the name of the instructing agent:`
+
+			`the date of the notification:`
+
+			`a heading containing the words 'Remitter notification' clearly at the top of the notification:`
+
+			`a statement containing words with the following effect: 'We have sent the following same-day cleared
+			 payment to the payee's financial institution to credit the account specified. Although we cannot
+			 reverse the payment, the payment will be cleared funds only when the payee's financial institution
+			 credits the payee's account with the amount of the payment.': `
+
+			`the name of the debtor:`
+
+			`the creditor's account name or BIC: `
+
+			`enough information to enable the debtor to identify the creditor's account number or, for a credit
+			card or scheme debit card, the creditor's primary account number (see clause 1.11 of these SCP
+			Procedures for guidance):`
+
+			`the amount of the payment (NZD):`
+
+			`a heading that states 'details' or words with a similar meaning followed by the contents of the
+			particulars field, code field, and reference field.`
+		)
+	)
+
+	pnz::clause(
+		"1.8"
+		"Sending confirmation: SCP settled"
+
+		`It is optional for the instructing agent to offer the service of providing the creditor with a
+		'sending confirmation'.  A sending confirmation service enables the debtor to require the instructing
+		agent to notify the creditor that the instructing agent has settled the SCP.`
+
+		`If the instructing agent offers the sending confirmation service and the debtor of an SCP requires
+		the instructing agent to send the creditor a sending confirmation, the instructing agent will notify
+		the creditor that the instructing agent has settled the SCP.`
+
+		`If the instructing agent sends a sending confirmation under subclause (2), the instructing agent—`
+
+		pnz::level2(
+			`may only send the sending confirmation after the instructing agent has received a system message
+			from the transaction delivery system confirming settlement of the SCP; and `
+
+			`must ensure that the sending confirmation complies with the requirements in subclauses (4) to (7).`
+		)
+
+		`The instructing agent must send the sending confirmation to the creditor as soon as practicable after
+		the instructing agent receives the system message confirming settlement of the SCP.`
+
+		`The instructing agent must send the sending confirmation to the creditor by email.`
+
+		`If the instructing agent tries to notify the creditor using an email address but the email is not
+		delivered (because, for example, the email address is not valid), the instructing agent is not required to—`
+
+		pnz::level2(
+			`try to use the email address again to notify the creditor; or`
+
+			`arrange to use another method of notification.`
+		)
+
+		`The instructing agent must ensure that the sending confirmation contains the following as a minimum:`
+
+		pnz::level2(
+			`the name of the instructing agent:`
+
+			`the date of the notification:`
+
+			`a heading containing the  words 'Sending confirmation' clearly at the top of the notification:`
+			
+			`a statement containing words with the following effect: 'We have sent the following same-day
+			cleared payment to your financial institution to credit the account specified. Although we cannot
+			reverse the payment, the payment will be cleared funds only when your financial institution
+			credits the payee's account with the amount of the payment.':`
+
+			`the name of the debtor:`
+
+			`the creditor's account name or BIC:`
+
+			`enough information to enable the creditor to identify the creditor's account number, or, for a
+			credit card or scheme debit card, the creditor's primary account number (see clause 1.11 of
+			these SCP Procedures for guidance):`
+
+			`the amount of the payment (NZD):`
+
+			`a heading that states 'details' or words with a similar meaning followed by the contents of
+			the particulars field, the code field and the reference field.`
+		)
+	)
+
+	pnz::clause(
+		"1.9"
+		"Remitter confirmation: SCP instruction received"
+
+		`It is optional for the instructing agent to offer the service of providing a debtor with a
+		'remitter confirmation'.  A remitter confirmation service requires the instructing agent to
+		notify the debtor that the instructed agent has been instructed to credit the SCP to the
+		creditor's account.`
+
+		`If the instructing agent offers the debtor the remitter confirmation service and the debtor
+		of an SCP requires the instructing agent to send the debtor a remitter confirmation, the
+		instructing agent will notify the debtor that the instructed agent been instructed to credit
+		the SCP to the creditor's account.`
+
+		`If the instructing agent gives a remitter confirmation under subclause (2), the instructing
+		agent—`
+
+		pnz::level2(
+			`may only give the remitter confirmation notification after the instructing agent has received
+			a 'delivery notification' system message from the transaction delivery system confirming that
+			SWIFT's system has effectively delivered the payment message or HVCS instruction to the
+			instructed agent; and`
+
+			`must ensure that the remitter confirmation complies with the requirements for a remitter
+			confirmation in subclauses (4) to (7).`
+		)
+
+		`The instructing agent must send the remitter confirmation to the debtor as soon as practicable
+		after the instructing agent has received a system message from the transaction delivery system
+		confirming that the additional settlement information from ESAS has been released to the instructed
+		agent.`
+
+		`The instructing agent must send the remitter confirmation to a debtor by email.`
+		
+		`If the instructing agent tries to send the debtor the remitter confirmation using an email address
+		but the email is not delivered (because, for example, the email address is not valid), the instructing
+		agent is not required to—`
+
+		pnz::level2(
+			`try to use the email address again to notify the debtor; or`
+			`arrange to use another method of notification.`
+		)
+
+		`The instructing agent must ensure that the remitter confirmation contains the following as a minimum:`
+
+		pnz::level2(
+			`the name of the instructing agent:`
+
+			`the date of the notification:`
+
+			`a heading containing the words 'Remitter confirmation' clearly at the top of the notification:`
+
+			`a statement containing words with the following effect: "The following same-day cleared payment was
+			delivered to the payee's financial institution to credit the account specified. Although we cannot
+			reverse the payment, the payment will be cleared funds only when the payee's financial institution
+			credits the payee's account with the amount of the payment.':`
+
+			`the name of the debtor:`
+
+			`the creditor's account name or BIC:`
+
+			`enough information to enable the debtor to identify the creditor's account number or, for a credit
+			card or scheme debit card, the creditor's primary account number (see clause 1.11 of these SCP
+			Procedures for guidance):`
+
+			`the amount of the payment (NZD):`
+			`a heading that states 'details' or words with a similar meaning followed by the contents of the
+			particulars field, the code field and the reference field.`
+		)
+	)
+
+	pnz::clause(
+		"1.10"
+		"Beneficiary notification: SCP credited"
+
+		`The instructing agent must require the instructed agent to notify the creditor that the instructed
+		agent has credited the creditor's account with the amount of the SCP, if required to do so by the
+		debtor (beneficiary notification).`
+		
+		`If the instructing agent requires the instructed agent to send a beneficiary notification, the
+		instructed agent must notify the creditor in accordance with subclauses (3) to (5) as soon as
+		practicable after crediting the creditor's account.`
+
+		`The instructed agent must send the beneficiary notification to the creditor in writing—`
+
+		pnz::level2(
+			`by email; or`
+			`by a reasonably secure electronic communication method that is agreed to by the creditor.`
+		)
+
+		`If the instructed agent tries to send the creditor the beneficiary notification using an email
+		address but the email is not delivered (because, for example, the email address is not valid),
+		the instructed agent is not required to—`
+
+		pnz::level2(
+			`try to use the email address again to notify the creditor; or`
+			`arrange to use another method of notification; or`
+			`tell the instructing agent that delivery failed; or`
+			`ask the instructing agent to verify the email address provided by the instructing agent.`
+		)
+
+		`The instructed agent must ensure that the beneficiary notification contains the following as a
+		minimum:`
+
+		pnz::level2(
+			`the name of the instructed agent:`
+			
+			`the date of the notification:`
+			
+			`a heading containing words 'Beneficiary notification' clearly at the top of the notification:`
+			
+			`a statement containing words with the following effect: 'We have credited the following same-day
+			cleared payment to the account specified. The payment is in cleared funds. We cannot return the
+			payment and the payer's financial institution cannot reverse it.':`
+			
+			`the name of the debtor:`
+			
+			`the creditor's account name or BIC:`
+			
+			`enough information to enable the creditor to identify the creditor's account number, or, for a
+			credit card or scheme debit card, the creditor's primary account number (see clause 1.11 of these
+			SCP Procedures for guidance):`
+
+			`the amount of the payment (NZD):`
+
+			`a heading that states 'details' or words with a similar meaning followed by the contents of the
+			particulars field, the code field and the reference field.`
+		)
+	)
+	pnz::tag_bestpractice
+	pnz::clause(
+		"1.11"
+		"SBI account number masking: minimum"
+
+		`For each notification specified in this chapter, the following clauses require a participant sending
+		the notification to ensure it contains enough information for the debtor or the creditor receiving the
+		notification to identify the creditor's account being credited with the amount of the SCP:`
+
+		pnz::level2(
+			`1.7(7)(g)`
+			`1.8(7)(g)`
+			`1.9(7)(g)`
+			`1.10(5)(g)`
+			`2.9(g)`
+		)
+
+		`The participant should:`
+
+		pnz::level2(
+			`if the account is identified by an account number formatted in accordance with the applicable
+			message standards, the components of the account number should be masked in accordance with the
+			following table:`
+
+			pnz::table(
+				#table(
+					[
+						"Component of account number"
+						"Required for SCP notification?"
+					]
+					[
+						[
+							"Interchange number"
+							"Not required."
+						]
+						[
+							"Branch number"
+							"Yes: all 4 digits of the branch number."
+						]
+						[
+							"Account number"
+							`Yes: The final 4 digits of the account number and an asterisk substituted for
+							each other digit of the account number to the left of the final 4 digits.`
+						]
+						[
+							"Suffix"
+							"Yes: All 2/3 digits of the suffix."
+						]
+					]
+				)
+			)
+
+			`if the account is identified by the creditor's primary account number (PAN) linked to a
+			credit card or scheme debit card, the digits of the PAN are required to comply with PCI DSS
+			standards for masking the PAN.`
+		)
+	)
+
+	pnz::section_heading( "Chapter 2: On-us SCPs" )
+	pnz::tag_standards
+	pnz::clause(
+		"2.1"
+		"Application of this chapter"
+
+		pnz::nonumber(
+			`This chapter applies to an SCP if the debtor and the creditor are customers of the same
+			participant (on-us SCP).`
+		)
+	)
+	pnz::subsection_heading( "On-us SCP processing" )
+	pnz::clause(
+		"2.2"
+		"60 minute on-us SCP"
+
+		`A participant must ensure that the time period for processing an on-us SCP is no more than 60 minutes.`
+
+		`For the purposes of subclause (1)—`
+		pnz::level2(
+			`the time period commences when the participant debits the debtor's account with the amount of the
+			SCP; and`
+
+			`the time period ends—`
+
+			pnz::level3(
+				`if the participant notifies the creditor that it has credited the creditor's account with the
+				amount of the SCP under clause 2.9 (on-us beneficiary notification), when the participant sends
+				the on-us beneficiary notification to the creditor; or`
+
+				`if the participant is not required to send an on-us beneficiary notification in accordance with
+				 clause 2.9, when the participant credits the creditor's account with the amount of the SCP.`
+			)
+		)
 	)
 ]
 
-
 /*
-
-1.7 Remitter notification: SCP settled
-
-(b)  
-(4) The instructing agent must send the remitter confirmation to the debtor as soon as practicable after the instructing agent receives the system message confirming settlement of the SCP.
-(5) The instructing agent must send the remitter confirmation to the debtor by email.
-(6) If the instructing agent tries to notify the debtor using an email address but the email is not delivered (because, for example, the email address is not valid), the instructing agent is not required to—
-(a) try to use the email address again to notify the debtor; or
-(b) arrange to use another method of notification.
-(7) The instructing agent must ensure that the remitter notification contains the following as a minimum: 
-(a) the name of the instructing agent:
-(b) the date of the notification:
-(c) a heading containing the words ‘Remitter notification’ clearly at the top of the notification:
-(d) a statement containing words with the following effect: ‘We have sent the following same-day cleared payment to the payee’s financial institution to credit the account specified. Although we cannot reverse the payment, the payment will be cleared funds only when the payee’s financial institution credits the payee’s account with the amount of the payment.’: 
-(e) the name of the debtor:
-(f) the creditor's account name or BIC: 
-(g) enough information to enable the debtor to identify the creditor's account number or, for a credit card or scheme debit card, the creditor's primary account number (see clause 1.11 of these SCP Procedures for guidance):
-(h) the amount of the payment (NZD):
-
-(i) a heading that states ‘details’ or words with a similar meaning followed by the contents of the particulars field, code field, and reference field.
-(j) 
-
-
-
-
-1.8 Sending confirmation:
-SCP settled
-
-(1) It is optional for the instructing agent to offer the service of providing the creditor with a 'sending confirmation'.  A sending confirmation service enables the debtor to require the instructing agent to notify the creditor that the instructing agent has settled the SCP.
-(2) If the instructing agent offers the sending confirmation service and the debtor of an SCP requires the instructing agent to send the creditor a sending confirmation, the instructing agent will notify the creditor that the instructing agent has settled the SCP.
-(3) If the instructing agent sends a sending confirmation under subclause (2), the instructing agent—
-(a) may only send the sending confirmation after the instructing agent has received a system message from the transaction delivery system confirming settlement of the SCP; and 
-(b) must ensure that the sending confirmation complies with the requirements in subclauses (4) to (7).
-(4) The instructing agent must send the sending confirmation to the creditor as soon as practicable after the instructing agent receives the system message confirming settlement of the SCP. 
-(5) The instructing agent must send the sending confirmation to the creditor by email. 
-(6) If the instructing agent tries to notify the creditor using an email address but the email is not delivered (because, for example, the email address is not valid), the instructing agent is not required to—
-(a) try to use the email address again to notify the creditor; or
-(b) arrange to use another method of notification.
-(7) The instructing agent must ensure that the sending confirmation contains the following as a minimum: 
-(a) the name of the instructing agent:
-(b) the date of the notification:
-(c) a heading containing the  words ‘Sending confirmation’ clearly at the top of the notification:
-(d) a statement containing words with the following effect: ‘We have sent the following same-day cleared payment to your financial institution to credit the account specified. Although we cannot reverse the payment, the payment will be cleared funds only when your financial institution credits the payee’s account with the amount of the payment.’:
-(e) the name of the debtor:
-(f) the creditor's account name or BIC: 
-
-(g) enough information to enable the creditor to identify the creditor's account number, or, for a credit card or scheme debit card, the creditor's primary account number (see clause 1.11 of these SCP Procedures for guidance):
-(h) the amount of the payment (NZD):
-(i) a heading that states ‘details’ or words with a similar meaning followed by the contents of the particulars field, the code field and the reference field.
-
-
-
-
-
-
-
-1.9 Remitter confirmation:  SCP instruction received
-
-(1) It is optional for the instructing agent to offer the service of providing a debtor with a 'remitter confirmation'.  A remitter confirmation service requires the instructing agent to notify the debtor that the instructed agent has been instructed to credit the SCP to the creditor's account.
-(2) If the instructing agent offers the debtor the remitter confirmation service and the debtor of an SCP requires the instructing agent to send the debtor a remitter confirmation, the instructing agent will notify the debtor that the instructed agent been instructed to credit the SCP to the creditor's account. 
-(3) If the instructing agent gives a remitter confirmation under subclause (2), the instructing agent—
-(a) may only give the remitter confirmation notification after the instructing agent has received a 'delivery notification' system message from the transaction delivery system confirming that SWIFT's system has effectively delivered the payment message or HVCS instruction to the instructed agent; and 
-(b) must ensure that the remitter confirmation complies with the requirements for a remitter confirmation in subclauses (4) to (7). 
-(4) The instructing agent must send the remitter confirmation to the debtor as soon as practicable after the instructing agent has received a system message from the transaction delivery system confirming that the additional settlement information from ESAS has been released to the instructed agent. 
-(5) The instructing agent must send the remitter confirmation to a debtor by email.
-(6) If the instructing agent tries to send the debtor the remitter confirmation using an email address but the email is not delivered (because, for example, the email address is not valid), the instructing agent is not required to—
-(a) try to use the email address again to notify the debtor; or
-(b) arrange to use another method of notification. 
-(7) The instructing agent must ensure that the remitter confirmation contains the following as a minimum: 
-(a) the name of the instructing agent:
-(b) the date of the notification:
-(c) a heading containing the words ‘Remitter confirmation’ clearly at the top of the notification:
-
-(d) a statement containing words with the following effect: "The following same-day cleared payment was delivered to the payee’s financial institution to credit the account specified. Although we cannot reverse the payment, the payment will be cleared funds only when the payee’s financial institution credits the payee’s account with the amount of the payment.’:  
-(e) the name of the debtor:  
-(f) the creditor's account name or BIC:   
-(g) enough information to enable the debtor to identify the creditor's account number or, for a credit card or scheme debit card, the creditor's primary account number (see clause 1.11 of these SCP Procedures for guidance):
-(h) the amount of the payment (NZD):
-(i) a heading that states ‘details’ or words with a similar meaning followed by the contents of the particulars field, the code field and the reference field.
-
-1.10 Beneficiary notification: SCP credited
-
-
-(1) The instructing agent must require the instructed agent to notify the creditor that the instructed agent has credited the creditor's account with the amount of the SCP, if required to do so by the debtor (beneficiary notification).  
-(2) If the instructing agent requires the instructed agent to send a beneficiary notification, the instructed agent must notify the creditor in accordance with subclauses (3) to (5) as soon as practicable after crediting the creditor's account.
-(3) The instructed agent must send the beneficiary notification to the creditor in writing— 
-(a)  by email; or 
-(b)  by a reasonably secure electronic communication method that is agreed to by the creditor.
-(4) If the instructed agent tries to send the creditor the beneficiary notification using an email address but the email is not delivered (because, for example, the email address is not valid), the instructed agent is not required to—
-(a) try to use the email address again to notify the creditor; or
-(b) arrange to use another method of notification; or
-(c) tell the instructing agent that delivery failed; or
-(d) ask the instructing agent to verify the email address provided by the instructing agent. 
-(5) The instructed agent must ensure that the beneficiary notification contains the following as a minimum: 
-(a) the name of the instructed agent:
-(b) the date of the notification:
-(c) a heading containing words ‘Beneficiary notification’ clearly at the top of the notification:
-(d) a statement containing words with the following effect: ‘We have credited the following same-day cleared payment to the account specified. The payment is in cleared funds. We cannot return the payment and the payer’s financial institution cannot reverse it.’:
-
-
-
-
-
-
-
-(e) the name of the debtor:  
-(f) the creditor's account name or BIC: 
-(g) enough information to enable the creditor to identify the creditor's account number, or, for a credit card or scheme debit card, the creditor's primary account number (see clause 1.11 of these SCP Procedures for guidance):
-(h) the amount of the payment (NZD):
-(i) a heading that states ‘details’ or words with a similar meaning followed by the contents of the particulars field, the code field and the reference field.
-
-
-1.11 SBI account number masking: minimum
-
-(1) For each notification specified in this chapter, the following clauses require a participant sending the notification to ensure it contains enough information for the debtor or the creditor receiving the notification to identify the creditor's account being credited with the amount of the SCP:
-(a) 1.7(7)(g)
-(b) 1.8(7)(g)
-(c) 1.9(7)(g)
-(d) 1.10(5)(g)
-(e) 2.9(g)
-(2) The participant should:
-(a) if the account is identified by an account number formatted in accordance with the applicable message standards, the components of the account number should be masked in accordance with the following table: 
-
-Component of account number
-Required for SCP notification?
-Interchange number
-Not required.
-Branch number
-Yes: all 4 digits of the branch number.
-Account number
-Yes: The final 4 digits of the account number and an asterisk substituted for each other digit of the account number to the left of the final 4 digits. 
-Suffix
-Yes: All 2/3 digits of the suffix.
-
-(b) if the account is identified by the creditor's primary account number (PAN) linked to a credit card or scheme debit card, the digits of the PAN are required to comply with PCI DSS standards for masking the PAN.
-
-
-
-Chapter 2: On-us SCPs
-
-
-2.1 Application of this chapter
-
-This chapter applies to an SCP if the debtor and the creditor are customers of the same participant (on-us SCP).
- 
-
-On-us SCP processing
-
-2.2 60 minute on-us SCP
-
-(1) A participant must ensure that the time period for processing an on-us SCP is no more than 60 minutes.
-(2) For the purposes of subclause (1)— 
-(a) the time period commences when the participant debits the debtor’s account with the amount of the SCP; and 
-(b) the time period ends—
-(i) if the participant notifies the creditor that it has credited the creditor's account with the amount of the SCP under clause 2.9 (on-us beneficiary notification), when the participant sends the on-us beneficiary notification to the creditor; or
-(ii) if the participant is not required to send an on-us beneficiary notification in accordance with clause 2.9, when the participant credits the creditor's account with the amount of the SCP.
-
 2.3 Form, content, and delivery of on-us SCP
 
 (1) A participant may determine the form, content, and method of delivery of an SCP instruction from a debtor to the participant.
@@ -412,13 +627,13 @@ Optional
 (6) The participant must ensure that the on-us beneficiary notification contains the following as a minimum: 
 (a) the name of the participant:
 (b) the date of the notification:
-(c) a heading containing the words ‘On-us Beneficiary notification’ clearly at the top of the notification:
-(d) a statement containing words with the following effect: ‘We have credited the following same-day cleared payment to the account specified. The payment is in cleared funds and we cannot reverse it.’:
+(c) a heading containing the words 'On-us Beneficiary notification' clearly at the top of the notification:
+(d) a statement containing words with the following effect: 'We have credited the following same-day cleared payment to the account specified. The payment is in cleared funds and we cannot reverse it.':
 (e) the name of the debtor:
 (f) the creditor's account name or BIC: 
 (g) enough information to enable the creditor to identify the creditor's account number, or, for a credit card or scheme debit card, the creditor's primary account number (see clause 1.11 of these SCP Procedures for guidance):
 (h) the amount of the payment (NZD):
-(i) a heading that states ‘details’ or words with a similar meaning followed by the contents of the particulars field, the code field and the reference field.
+(i) a heading that states 'details' or words with a similar meaning followed by the contents of the particulars field, the code field and the reference field.
 
 
 
@@ -437,13 +652,13 @@ on-us SCP
 (5) The participant should ensure that the on-us remitter confirmation contains the following as a minimum:
 (a) the name of the participant:
 (b) the date of the confirmation:
-(c) a heading containing the words ‘On-us Remitter confirmation’ clearly at the top of the notification: 
-(d) a statement containing the words with the following effect: ‘We have processed the following same-day cleared payment for payment to the account specified. The payment is in cleared funds and we cannot reverse it.’:
+(c) a heading containing the words 'On-us Remitter confirmation' clearly at the top of the notification: 
+(d) a statement containing the words with the following effect: 'We have processed the following same-day cleared payment for payment to the account specified. The payment is in cleared funds and we cannot reverse it.':
 (e) the name of the debtor:
 (f) the creditor's account name or BIC: 
 (g) enough information to enable the debtor to identify the creditor's account number, or, for a credit card or scheme debit card, the creditor's primary account number:
 (h) the amount of the payment (NZD): 
-(i) a heading that states ‘details’ or words with a similar meaning followed by the contents of the particulars field, the code field and the reference field.
+(i) a heading that states 'details' or words with a similar meaning followed by the contents of the particulars field, the code field and the reference field.
 
 
 
@@ -490,7 +705,7 @@ Notifications:
 You may request any of the following notifications in relation to your payment instruction:
 (a) notification to be provided to you or the payee when the Bank has received confirmation that the Bank has settled the payment with the payee's bank;
 (b) notification to be provided to you when the Bank receives confirmation that the payee's bank has received the transaction; and/or
-(c) notification to be provided to the payee [by the payee’s bank] when the payee's bank has credited the funds into the payee's account.
+(c) notification to be provided to the payee [by the payee's bank] when the payee's bank has credited the funds into the payee's account.
 
 Where you have requested that the Bank provides the notifications in (a) and/or (b) above, the Bank will notify you or the payee (as the case may be) as soon as reasonably possible after the Bank has received confirmation of the relevant matter. Where you have requested a notification under (c) above, the Bank will request that the payee's bank notifies the payee as soon as reasonably possible after the payee's account has been credited.
 
