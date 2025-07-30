@@ -287,8 +287,6 @@ h1 {
 .bullets {
   list-style-type: disc;       /* Solid bullet for top level */
   padding-left: 20px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
 }
 
 .bullets > li {
