@@ -116,6 +116,10 @@ h1 {
   font-style: italic;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .diagram img {
   max-width: 100%;
   height: auto;

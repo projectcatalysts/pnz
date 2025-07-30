@@ -70,7 +70,7 @@ import [
 
 	// pnz.legal::clause creates a clause with a header in the left column
 	// clauses numbered with the style (1) (2)
-	pnz.legal::clause = (id as text, heading as text, ...content as any) => #( div = 
+	pnz.legal::clause = (id as text, heading as text, ...content as any) => #( div =
 		html::class(
 			"clause-row",
 			[
@@ -81,6 +81,21 @@ import [
 					}
 				} @> heading
 				ol = html::class( "level1", content )
+			]
+		)
+	)
+
+	pnz.legal::nonumber_clause = (id as text, heading as text, ...content as any) => #( div =
+		html::class(
+			"clause-row",
+			[
+				div = {
+					html::attributes = {
+						class = "clause-heading"
+						data-number = id
+					}
+				} @> heading
+				div = html::class( "level1", content )
 			]
 		)
 	)
@@ -102,6 +117,41 @@ import [
 	pnz.legal::br = #( br = null )
 
 	pnz.legal::nonumber = (...content as any) => #( div = content )
+
+	// pnz.legal::nonumber_paragraph configures the content as a paragraph
+	pnz.legal::nonumber_paragraph = (...content as any) => #( p = content )
+
+	// pnz.legal::paragraph configures the content as a paragraph
+	pnz.legal::paragraph = (...content as any) => [
+		p = content
+	]
+
+	// pnz.legal::italic_div configures the content as a paragraph
+	pnz.legal::italic_div = (...content as any) => #( div =
+		html::class( "italic", content )
+	)
+
+	// pnz.legal::italic configures the content as a italic text
+	pnz.legal::italic = (content as text) => #( span =
+		html::class( "italic", content )
+	)
+
+	// pnz.legal::italic_item configures the content as a italic text
+	pnz.legal::italic_item = (content as text) => #( li =
+		html::class( "italic", content )
+	)
+
+	// pnz.legal::bold configures the content as a bold text
+	pnz.legal::bold = (content as text) => #( span =
+		html::class( "bold", content )
+	)
+
+	// pnz.legal::bold_italic configures the content as a bold italic text
+	pnz.legal::bold_italic = (content as text) => #( span =
+		html::class( "bold italic", content )
+	)
+
+
 
 	// pnz.legal::rowspan adds a rowspan attribute to table data
 	pnz.legal::rowspan = (rowCount as UInt64.Type) => {
@@ -162,12 +212,4 @@ import [
 
 	// pnz.legal::list configures the content as a list
 	pnz.legal::list = (...content as any) => #( ul = content )
-
-	// pnz.legal::paragraph configures the content as a paragraph
-	pnz.legal::paragraph = (...content as any) => #( p = content )
-
-	// pnz.legal::italic configures the content as a itelic text
-	pnz.legal::italic = (content as text) => #( span =
-		html::class( "italic", content )
-	)
 }
