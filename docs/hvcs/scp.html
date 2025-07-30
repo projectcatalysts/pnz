@@ -5,16 +5,143 @@
         <title>HVCS SCP</title>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap" rel="stylesheet"/>
         <link href="../styles/pnz.legal.css" rel="stylesheet"/>
+        <link href="../styles/pnz.hvcs.menu.css" rel="stylesheet"/>
     </head>
     <body class="document">
+        <div class="logo">
+            <img src="../images/PNZ_OnWhite_rgb.gif" alt="PNZ Logo"></img>
+        </div>
+        <div>
+            <div class="document-title">Appendix 14C: SCP procedures</div>
+            <div class="document-meta">Version 2</div>
+            <div class="document-meta">Effective date: 20/11/2023</div>
+        </div>
+        <h1 class="section-heading">Document purpose and overview</h1>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">HVCS rules and procedures overview</div>
+            <ol class="level1">
+                <div>
+                    <p>This document SCP Procedures (Part C) is one part of a suite of documentation to help
+			participants understand what is required to become a high value clearing system (HVCS)
+			participant and how to send and receive individual HVCS instructions and NZD HVCS
+			payments that the participant cannot revoke or reverse after settlement.</p>
+                </div>
+            </ol>
+        </div>
+        <div>
+            <div class="menu-container">
+                <div class="menu-root">
+                    <p>Payments NZ Rules</p>
+                    <p>Part 9</p>
+                    <p>HVCS Clearing and Settlement</p>
+                </div>
+                <div class="menu-branches">
+                    <div class="menu-branch">
+                        <p>Part A</p>
+                        <p>HVCS Overview</p>
+                    </div>
+                    <div class="menu-branch">
+                        <p>Part B</p>
+                        <p>HVCS Common Procedures</p>
+                    </div>
+                    <div class="menu-branch active">
+                        <p>Part C</p>
+                        <p>SCP Procedures</p>
+                    </div>
+                    <div class="menu-branch">
+                        <p>Part D</p>
+                        <p>MX Messaging Procedures (ISO 20022)</p>
+                    </div>
+                    <div class="menu-branch">
+                        <p>Part E</p>
+                        <p>MT Messaging Procedures (ISO 15022)</p>
+                    </div>
+                    <div class="menu-branch">
+                        <p>Part F</p>
+                        <p>Co-existence Procedures</p>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-caption">Diagram 01: HVCS Rules and Procedures documentation structure</div>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number=""></div>
+            <ol class="level1">
+                <div>
+                    <p>This document should be read in conjunction with the Payments NZ Rules (in particular, Part 9).
+			Part 9 contains the HVCS clearing and settlement rules which specify the requirements for participants
+			to create, exchange, settle, deliver and receive HVCS instructions and make HVCS payments (including
+			SCPs) through HVCS. Part 2 contains the access and participation rules for an entity to join HVCS.</p>
+                    <p>In addition to the Rules, the applicable HVCS standards (Appendix 14) which specify how participants
+			comply with Part 9 are comprised of:</p>
+                    <ul class="bullets">
+                        <li>Part A — HVCS Overview</li>
+                        <ul>
+                            <li>Provides a high-level overview of the HVCS community, message types, how HVCS clearing and
+					settlement works, and the business, technical, and regulatory environment in which the process
+					operates.  This is a non-binding document for use as guidance only.</li>
+                        </ul>
+                        <li>Part B — HVCS Common Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures and product requirements that apply to all HVCS instructions at
+					all times.  This document also contains some non-binding commentary and best practice.</li>
+                        </ul>
+                        <li>Part C — SCP Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures and product requirements that apply only to an HVCS instruction
+					that is a same day cleared payment.  This document also contains some non-binding commentary
+					and best practice, such as recommended terms and conditions with customers.</li>
+                        </ul>
+                        <li>Part D — MX Messaging Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures on how to send and receive MX messages (ie, NZ HVCS ISO 20022
+					messages) across the HVCS MX CUG.  This document also contains some non-binding commentary and
+					best practice.</li>
+                        </ul>
+                        <li>Part E — MT Messaging Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures on how to send and receive MT messages (ie, NZ HVCS ISO 15022
+					messages) across the HVCS MT CUG.  This document also contains some non-binding commentary and
+					best practice.</li>
+                        </ul>
+                        <li>Part F — Co-existence Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures for participants during the co-existence phase of the migration
+					from sending and receiving MT messages to MX messages.</li>
+                        </ul>
+                    </ul>
+                </div>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">Standards, best practices and commentary</div>
+            <ol class="level1">
+                <p>
+                    <span>For information on how to determine whether the content of an applicable HVCS Standard in Appendix 14
+			creates binding legal rights or obligations, please see</span>
+                    <span class="italic">Part A - Overview.</span>
+                </p>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">Document purpose and structure</div>
+            <ol class="level1">
+                <li>This document discusses the SCP procedures that apply to SCP payment instructions.</li>
+                <li>This document is divided into three chapters.</li>
+                <li>Chapter 1 provides an overview on processing inter-bank SCPs and inter-bank customer notifications.</li>
+                <li>Chapter 2 provides an overview on processing on-us SCPs and on-us customer notifications.</li>
+                <li>Chapter 3 specifies the terms and conditions for debtors and creditors.</li>
+            </ol>
+        </div>
         <h1 class="section-heading">Chapter 1: Inter-bank SCPs</h1>
         <div class="tag-standards"></div>
         <div class="clause-row">
             <div class="clause-heading" data-number="1.1">Application of this chapter</div>
             <ol class="level1">
                 <div>
-                    <li>This chapter applies to an SCP if the debtor and the creditor are customers of different
-			participants where the SCP is settled using the transaction delivery system.</li>
+                    <p>This chapter applies to an SCP if the debtor and the creditor are customers of different
+			participants where the SCP is settled using the transaction delivery system.</p>
                 </div>
             </ol>
         </div>
@@ -173,7 +300,7 @@
 		offer only one of these notifications to customers to avoid duplication of notifications.</li>
                 <div>
                     <br/>
-                    <li>The following diagram shows when the notification is sent for an inter-bank SCP:</li>
+                    <p>The following diagram shows when the notification is sent for an inter-bank SCP:</p>
                 </div>
                 <div class="diagram">
                     <img src="images/hvcs_scp_notifications.png" alt="SCP Notifications"></img>
@@ -421,8 +548,8 @@
             <div class="clause-heading" data-number="2.1">Application of this chapter</div>
             <ol class="level1">
                 <div>
-                    <li>This chapter applies to an SCP if the debtor and the creditor are customers of the same
-			participant (on-us SCP).</li>
+                    <p>This chapter applies to an SCP if the debtor and the creditor are customers of the same
+			participant (on-us SCP).</p>
                 </div>
             </ol>
         </div>

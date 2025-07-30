@@ -1,0 +1,84 @@
+.menu-container {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	margin: 10px auto;
+	margin-bottom: 1em;
+	width: fit-content;
+	max-width: 100%;
+  }
+  
+  /* Top box */
+  .menu-root {
+	background: #1a3a5b;       /* dark blue */
+	color: white;
+	padding: 15px 30px;
+	border-radius: 10px;
+	font-weight: bold;
+	display: inline-block;
+	margin-bottom: 40px;
+	position: relative;
+  }
+  
+  /* Horizontal line under root */
+  .menu-root::after {
+	content: "";
+	position: absolute;
+	bottom: -20px;
+	left: 50%;
+	width: 2px;
+	height: 20px;
+	background: #333;
+  }
+  
+  /* Branch container */
+  .menu-branches {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;         /* allow items to wrap to new lines */
+	position: relative;
+	max-width: 100%;         /* ensures it can shrink */
+  }
+  /* Horizontal line connecting branches */
+  .menu-branches::before {
+	content: "";
+	position: absolute;
+	top: -20px;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: #333;
+  }
+  
+  /* Individual branch boxes */
+  .menu-branch {
+	background: #bcd0e5;        /* light blue */
+	padding: 15px 20px;
+	border-radius: 10px;
+	width: 100px;
+	font-size: 14px;
+	line-height: 1.3em;
+  }
+  
+  /* Highlighted active branch */
+  .menu-branch.active {
+	background: #2b5f8a;        /* darker blue */
+	color: white;
+	font-weight: bold;
+  }
+
+  .menu-caption {
+	font-weight: bold;
+	margin-bottom: 1.5em;
+  }
+  
+  @media (max-width: 600px) {
+	.menu-branches {
+	  flex-direction: column;      /* stack vertically */
+	  align-items: center;
+	  gap: 10px;
+	}
+	.menu-branches::before {
+	  display: none;               /* hide connecting line on small screens */
+	}
+  }

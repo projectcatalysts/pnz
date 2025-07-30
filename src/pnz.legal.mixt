@@ -18,6 +18,7 @@ import [
 					title = "HVCS SCP"
 					link = html::stylesheet( "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" )
 					link = html::stylesheet( "../styles/pnz.legal.css" )
+					link = html::stylesheet( "../styles/pnz.hvcs.menu.css" )
 			]		
 			html::class(
 				"document"
@@ -25,6 +26,22 @@ import [
 			)
 		)
 	)
+
+	// pnz.legal::document_title creates a document title
+	pnz.legal::document_title = (title as text, version as text, effectiveDate as text ) => [
+		div = html::class(
+			"document-title"
+			title
+		)
+		div = html::class(
+			"document-meta"
+			$"Version $(version)"
+		)
+		div = html::class(
+			"document-meta"
+			$"Effective date: $(effectiveDate)"
+		)
+	]
 
 	// pnz.legal::section_heading creates a section heading
 	pnz.legal::section_heading = (content as any) => #( h1 =
@@ -108,6 +125,7 @@ import [
 		}
 	}
 
+	// pnz.legal::image inserts an image with alternate text
 	pnz.legal::image = (src as text, alt as text) => #( div =
 		html::class(
 			"diagram"
@@ -120,5 +138,36 @@ import [
 				} @> ""
 			}
 		)
+	)
+
+	// pnz.legal::image inserts an image with alternate text
+	pnz.legal::logo = #( div =
+		html::class(
+			"logo"
+			{
+				img = {
+					html::attributes = {
+						src = "../images/PNZ_OnWhite_rgb.gif"
+						alt = "PNZ Logo"
+					}
+				} @> ""
+			}
+		)
+	)
+
+	// pnz.legal::bullets sets the style of content to a bulleted list
+	pnz.legal::bullets = (...content as any) => #( ul = 
+		html::class( "bullets", content )
+	)
+
+	// pnz.legal::list configures the content as a list
+	pnz.legal::list = (...content as any) => #( ul = content )
+
+	// pnz.legal::paragraph configures the content as a paragraph
+	pnz.legal::paragraph = (...content as any) => #( p = content )
+
+	// pnz.legal::italic configures the content as a itelic text
+	pnz.legal::italic = (content as text) => #( span =
+		html::class( "italic", content )
 	)
 }
