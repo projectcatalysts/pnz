@@ -16,6 +16,17 @@
   --tag-text-color: #ffffff;  
 }
 
+@media print {
+  html, body {
+    background: white !important;  /* Ensure full page is white */
+  }  
+
+  * {
+    -webkit-print-color-adjust: exact;   /* Force Chrome to print colors */
+    print-color-adjust: exact;           /* Modern browsers */
+  }
+}
+
 html {
   background-color: #eaeaea; /* gray backdrop like Word print view */
 }
