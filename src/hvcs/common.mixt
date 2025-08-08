@@ -1,16 +1,9 @@
 
 import [
 	pnz = "../pnz.legal.mixt"
-	hvcs = "hvcs.mixt"
 ]
 
 [
-	pnz::logo
-	pnz::document_title(
-		"Appendix 14B: HVCS Common Procedures"
-		"1"
-		"20/11/2022"
-	)
 /*
 `Appendix 14B: HVCS Common Procedures`
 `Version 1`
@@ -58,13 +51,13 @@ import [
 `For information on how to determine whether the content of an applicable HVCS standard in Appendix 14 creates binding legal rights or obligations, please see Part A - Overview.`
 `Document purpose and structure`
 */
-/*
 		`This document discusses the HVCS Common Procedures that apply to normal processing of all HVCS instructions and the processing of errors and late HVCS payments.`
 		`This document is divided into three chapters.`
 		`Chapter 1 provides an overview on how to process HVCS instructions to settle and interchange HVCS payments under normal conditions.`
 		`Chapter 2 specifies how to process HVCS instructions to settle and interchange HVCS payments that contain errors.`
 		`Chapter 3 specifies how to process HVCS instructions to settle and interchange HVCS payments that have been settled after 16:45.`
 	)
+/*
 `Chapter 1: Normal HVCS processing`
 */
 	pnz::clause(

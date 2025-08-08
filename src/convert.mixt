@@ -1,6 +1,6 @@
 let
-	inputFileName = "src/hvcs/txt/coexistence.txt"
-	outputFileName = "src/hvcs/coexistence.mixt"
+	inputFileName = "src/hvcs/txt/scp.txt"
+	outputFileName = "src/converted.mixt"
 	file = File.Contents( inputFileName )
 	lines = Lines.FromBinary(
 		file
