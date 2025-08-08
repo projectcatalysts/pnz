@@ -1,6 +1,6 @@
 let
-	inputFileName = "src/hvcs/14B_HVCS common procedures v1.txt"
-	outputFileName = "src/hvcs/converted.mixt"
+	inputFileName = "src/hvcs/txt/coexistence.txt"
+	outputFileName = "src/hvcs/coexistence.mixt"
 	file = File.Contents( inputFileName )
 	lines = Lines.FromBinary(
 		file
