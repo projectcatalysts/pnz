@@ -1,51 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8"/>
-		<title>HVCS Overview</title>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
-		<link rel="stylesheet" href="../styles/pnz.legal.css"/>
-	</head>
-	<body>
-		<div class="document">
-			<h1 class="section-heading">Chapter 2: HVCS Overview</h1>
-			<div class="tag-commentary"></div>
-			<div class="tag-standards"></div>
-			<div class="tag-bestpractice"></div>
-			<div class="clause-row">
-				<div class="clause-heading" data-number="2.2">HVCS clearing and settlement process</div>
-				<div class="clause-content">
-					<ol class="level1">
-						<li>
-							The blocks in the following diagram show the stages in the high value clearing and settlement process described in the HVCS Standards.
-						</li>
-						<div class="diagram">
-							<img src="images/hcvs_clearing_and_settlement_process.png" alt="HVCS clearing and settlement stages"/>
-						</div>
-					</ol>
-				</div>
-			</div>
-			<div class="clause-row">
-				<div class="clause-heading" data-number="2.3">Payment instructions</div>
-				<div class="clause-content">
-					<ol class="level1">
-						<li>
-							For a payment message like an SCP, in which the funds are 'pushed' from a customer's account, the debtor gives a payment instruction to the debtor agent directly and communicates the information required by the debtor agent, for example:
-						</li>
-						<ol class="level2">
-							<li>the amount and the date of the HVCS payment,</li>
-							<li>the account name and the account number to be debited with the amount of the HVCS payment,</li>
-							<li>a way of identifying the creditor agent, and</li>
-							<li>the account name and the account number to be credited with the amount of the HVCS payment.</li>
-						</ol>
-					</ol>
-					<ol class="level1">
-						<li>
-							This content ensures correct processing in accordance with RBNZ and PNZ requirements.
-						</li>
-					</ol>
-				</div>
-			</div>
-		</div>
-	</body>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>HVCS Overview</title>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap" rel="stylesheet"/>
+        <link href="../styles/pnz.legal.css" rel="stylesheet"/>
+        <link href="../styles/pnz.hvcs.menu.css" rel="stylesheet"/>
+    </head>
+    <body class="document">
+        <div class="logo">
+            <img src="../images/PNZ_OnWhite_rgb.gif" alt="PNZ Logo"></img>
+        </div>
+        <div>
+            <div class="document-title">Appendix 14A: HVCS Overview</div>
+            <div class="document-meta">Version 2</div>
+            <div class="document-meta">Effective date: 24/02/2025</div>
+        </div>
+        <h1 class="section-heading">Document purpose and overview</h1>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">HVCS rules and procedures overview</div>
+            <ol class="level1">
+                <div>
+                    <p>This document HVCS Overview (Part A) is one part of a suite of documentation to help participants
+			understand what is required to become a high value clearing system (HVCS) participant and how to send
+			and receive individual HVCS instructions and NZD HVCS payments that the participant cannot revoke or
+			reverse after settlement.</p>
+                </div>
+            </ol>
+        </div>
+        <div>
+            <div class="menu-container">
+                <div class="menu-root">
+                    <p>Payments NZ Rules</p>
+                    <p>Part 9</p>
+                    <p>HVCS Clearing and Settlement</p>
+                </div>
+                <div class="menu-branches">
+                    <a href="overview.html" class="menu-branch active">
+                        <p>Part A</p>
+                        <p>HVCS Overview</p>
+                    </a>
+                    <a href="common.html" class="menu-branch">
+                        <p>Part B</p>
+                        <p>HVCS Common Procedures</p>
+                    </a>
+                    <a href="scp.html" class="menu-branch">
+                        <p>Part C</p>
+                        <p>SCP Procedures</p>
+                    </a>
+                    <a href="mx.html" class="menu-branch">
+                        <p>Part D</p>
+                        <p>MX Messaging Procedures (ISO 20022)</p>
+                    </a>
+                    <a href="mt.html" class="menu-branch">
+                        <p>Part E</p>
+                        <p>MT Messaging Procedures (ISO 15022)</p>
+                    </a>
+                    <a href="coexistence.html" class="menu-branch">
+                        <p>Part F</p>
+                        <p>Co-existence Procedures</p>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-caption">Diagram 01: HVCS Rules and Procedures documentation structure</div>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.1">Rationale for Change</div>
+            <ol class="level1">
+                <li>The introduction of MX messages to the High Value Clearing System (HVCS) introduces new ISO standard terms.  Readers familiar with the previous Appendix 14 will note that many of the terms used previously by the NZ payments industry have been replaced with their ISO equivalents in both the HVCS rules and procedures.</li>
+                <li>There are also many places where MT specific terms have been replaced by message system agnostic terms.  This is necessary to prepare for the removal of MT messaging from November 2025.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.2">Terminology Venn Diagram</div>
+            <ol class="level1">
+                <li>This diagram shows the relationship between the standards documents and also the relationship between key terms.</li>
+                <li>The Rules Part 19.1 should be referenced for definitions of all the terms within the diagram.</li>
+                <li>Additional definition of the specific message types and their use can be found in the HVCS Common Procedures Section at clause 1.1.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.3">Senders / Receivers / Instructing Agents / Instructed Agents</div>
+            <ol class="level1">
+                <li>ISO 20022 introduces the terms instructing agent and instructed agent.  These terms are used to describe the role of an HVCS participant in relation to a payment message that flows across the HVCS.  During settlement, the instructing agent’s ESAS account is debited, and the instructed agent’s ESAS account is credited.</li>
+                <li>Instructing agent and instructed agent are payment message specific terms.  When referencing the wider scope of HVCS Instructions (inclusive of exception and investigation messages and system messages), the terms sender and receiver are used, whereby the sender is the entity that constructs the exception and investigation message or system message and requests message delivery from SWIFT (or in some circumstances is SWIFT itself), and the receiver is the recipient entity.  The sender and receiver of the exception and investigation message and system message are represented within the From and To fields of the Business Application Header.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.1">HVCS clearing and settlement overview</div>
+            <ol class="level1">
+                <li>The following diagram and table provide a high-level overview of how the people, the organisations and the systems interact to create and process HVCS instructions and settle HVCS payments under normal processing conditions.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="9.10"></div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.2">HVCS clearing and settlement process</div>
+            <ol class="level1">
+                <li>The blocks in the following diagram show the stages in the high value clearing and settlement process described in the HVCS Standards.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.3">Payment instructions</div>
+            <ol class="level1">
+                <li>For a payment message like an SCP, in which the funds are ‘pushed’ from a customer’s account, the debtor gives a payment instruction to the debtor agent directly and communicates the information required by the debtor agent, for example:</li>
+                <ol class="level2">
+                    <li>the amount and the date of the HVCS payment,</li>
+                    <li>the account name and the account number to be debited with the amount of the HVCS payment,</li>
+                    <li>a way of identifying the creditor agent, and</li>
+                    <li>the account name and the account number to be credited with the amount of the HVCS payment.</li>
+                </ol>
+                <li>The payment instruction is usually authenticated (e.g. for an SCP with a log on password for internet banking) allowing the debtor agent to confirm that the payment instruction comes from a secure source.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.4"></div>
+            <ol class="level1"></ol>
+        </div>
+        <div>The HVCS is used to make large payments quickly. HVCS payments are:</div>
+        <ol class="level2">
+            <li>fast; and</li>
+            <li>irrevocable</li>
+        </ol>
+        <div>an HVCS payment cannot be reversed by the instructing agent after settlement, and</div>
+        <div>if the creditor’s account is credited with the amount of the HVCS payment, the instructed agent cannot reverse the HVCS payment.</div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.1">Message formats</div>
+            <ol class="level1">
+                <li>The HVCS uses two SWIFT message formats that have been defined for New Zealand’s HVCS. They are:</li>
+                <ol class="level2">
+                    <li>MX message format (ISO 20022)</li>
+                    <li>MT message format (ISO 15022)</li>
+                </ol>
+                <li>MX messages are an XML-based replacement for MT messages which will be retired at the end of the co-existence phase (scheduled for November 2025).</li>
+                <li>Further information on how to send and receive HVCS instructions in either format is provided in the respective procedures:</li>
+                <ol class="level2">
+                    <li>Part D MX Messaging Procedures (ISO 20022)</li>
+                    <li>Part E MT Messaging Procedures (ISO 15022)</li>
+                </ol>
+                <li>The Co-existence Procedures (Part F) includes a table that lists the message types for each format.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.2">AVP Closed User Group (CUG)</div>
+            <ol class="level1">
+                <li>The AVP CUG is the closed user group provided by SWIFT for HVCS instruction processing. Members of the AVP CUG exchange payment messages and other HVCS instructions.</li>
+                <li>There are two AVP CUGs that participants must join. They are the AVP MX CUG which is used to send MX messages, and the AVP MT CUG which is used for sending MT messages.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.3">HVCS payment categories</div>
+            <ol class="level1">
+                <li>An HVCS participant can make the following types of payment:</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.4">Introduction</div>
+            <ol class="level1">
+                <li>A customer credit transfer is used to make high value NZD payments from a debtor account to a creditor account.</li>
+                <li>A customer credit transfer payment message can be used by participants in the following scenarios:</li>
+                <ol class="level2">
+                    <li>Same day cleared payment (SCP) either –</li>
+                    <ol class="level3">
+                        <li>between 2 of its own customers (an on-us SCP), or</li>
+                        <li>from its own customer to a customer of another participant using a payment message,</li>
+                    </ol>
+                    <li>A domestic payment as an MX message to a creditor that does not meet the criteria to be classified as an SCP (e.g. alternate account number format)</li>
+                    <li>A cross border payment redirection</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.5">Same day cleared payment</div>
+            <ol class="level1">
+                <li>A participant’s customer typically uses a same day cleared payment (SCP) if the customer proposes to make a high value NZD payment to a New Zealand customer quickly in clear and irrevocable funds, for example, to complete a linked transaction.</li>
+                <li>The following diagram and table show at a high level how 2 different participants and their customers interact to make an SCP in exchange for transfer of the title to a house.</li>
+                <li>More information on SCPs is provided in Part C - SCP Procedures.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.6">Non-SCP Customer Credit Transfer</div>
+            <ol class="level1">
+                <li>This section applies to MX messages only.</li>
+                <li>A payment to a creditor that does not meet the SCP criteria can be sent a customer credit transfer without the SCP designation by omitting the Local Instrument code.  Examples of where this could be used are:</li>
+                <ol class="level2">
+                    <li>The creditor’s account number does not meet the SCP formatting requirements e.g. NZD payment to a foreign currency account of a domestic creditor, or</li>
+                    <li>The debtor agent is neither a participant nor AVP CUG member, such as a financial institution with an agency arrangement with a participant.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.7">Cross border payment redirection</div>
+            <ol class="level1"></ol>
+        </div>
+        <div>A cross border redirection allows a participant to forward a customer credit transfer message from an overseas financial institution (acting for the financial institution’s own customer) to the customer of another participant, who then credits its customer’s account with the amount of the cross border payment.</div>
+        <div>The diagram and table show, at a high level, how the people and organisations interact to make a cross border redirection.</div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.8">Introduction</div>
+            <ol class="level1">
+                <li>A financial institution (FI) credit transfer is used to transfer funds from one participant to another participant. A FI credit transfer message can also be used by participants in a direct and cover payment scenario.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.9">Financial institution credit transfer process</div>
+            <ol class="level1"></ol>
+        </div>
+        <div>A participant may send an FI credit transfer message to pay the creditor who is also a financial institution.</div>
+        <div>The following diagram and table show at a high level how financial institutions interact to send a FI to FI credit transfer which is typically the domestic settlement leg of a payment from the debtor to the creditor.</div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.10">Financial institution credit transfer cover process</div>
+            <ol class="level1"></ol>
+        </div>
+        <div>An FI credit transfer can also be used in a direct and cover payment scenario whereby a participant may send an FI credit transfer message with the contents of a customer credit transfer message received from an overseas financial institution (FI cover message).</div>
+        <div>An FI cover message:</div>
+        <ol class="level2">
+            <li>is linked to a customer credit transfer message involving a debtor or a creditor who is not a financial institution,</li>
+            <li>contains the linked customer credit transfer message with the name and address of the debtor or the creditor,</li>
+            <li>settles the obligations of a financial institution (the debtor agent) who sends a customer credit transfer message to another financial institution (for example the creditor agent in the diagram) if the debtor agent does not have an account with the creditor agent.</li>
+        </ol>
+        <div>The following diagram and table show at a high level how financial institutions interact to send an FI cover message.</div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.11">Introduction</div>
+            <ol class="level1">
+                <li>The exception and investigation messages are designed to support investigation case management in connection with the cancellation of payment messages or independently between a case assigner and assignee.</li>
+                <li>There are two common scenarios for exception and investigation messages to be used by participants:</li>
+                <ol class="level2">
+                    <li>an unsolicited return where a payment instruction has failed to credit the creditor’s account and resulted in a return message by the instructed agent; or</li>
+                    <li>a solicited return where a cancellation request has been initiated by the instructing agent and resulted in a return message.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.12">Unsolicited return – failed to credit account</div>
+            <ol class="level1">
+                <li>A Return message is initiated by the creditor agent and used to return the original payment message, for example, in the case of an invalid payment message (e.g. specifying an incorrect account number).</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.13">Solicited return – request for cancellation</div>
+            <ol class="level1">
+                <li>A Payment Cancellation Request message can be used to request the cancellation of an HVCS payment.  This message would typically be created by the debtor agent and sent to the creditor agent depending on the status of the payment.</li>
+                <li>This exception and investigation message must be used only for the return of HVCS payments and the sender of the cancellation request must include their investigation case identifier within the &quot;Case/Identification&quot; element of the exception and investigation message.</li>
+                <li>On receipt of a Payment Cancellation Request message by a participant, the participant must investigate the request and respond by sending a Resolution of Investigation message back to sender of the request indicating whether the Payment Cancellation Request is pending, or if it has been accepted or rejected.</li>
+                <li>If the Payment Cancellation Request is accepted, the participant sends a return message and the returned HVCS payment to the instructing agent of the HVCS payment being returned along with the Resolution of Investigation.</li>
+                <li>The diagram below describes the message flow between participants when a Payment Cancellation Request is sent by a debtor agent.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.14">Payment return</div>
+            <ol class="level1">
+                <li>Exception and investigation messages may result in a return message being sent by an agent to the previous agent in the payment chain to return a payment previously settled.</li>
+                <li>Return messages may be the consequence of a payment message cancellation requested by the debtor agent or one of the intermediary agents of the HVCS payment or sent by a creditor agent or instructed agent due to a failure to process the payment message.</li>
+                <li>The return message refers to the payment message(s) by means of references only, or by means of references and a set of elements from the payment message, and the return message must include a payment return code. The full value of the original HVCS payment must be returned as a single payment or in instalments in circumstances permitted by the applicable message standards.</li>
+                <li>The following diagram and table show at a high level how participants interact to return an HVCS payment with a return message where the payment message could not be processed for example, due to a failure to credit the creditor’s account.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="4.1">Message flows</div>
+            <ol class="level1">
+                <li>The AVP CUG is configured for Y-copy meaning all HVCS payment messages are sent in Y-copy mode. Y-copy mode requires a portion of the payment message to be sent to the RBNZ to authorise or refuse its delivery to the recipient. Authorised messages are only delivered to the recipients once they have been authorised, and typically once settlement of the HVCS payment has been made within RTGS.</li>
+                <li>More detail about Y-copy can be found in the respective procedures:</li>
+                <ol class="level2">
+                    <li>Part D MX Messaging Procedures (ISO 20022)</li>
+                    <li>Part E MT Messaging Procedures (ISO 15022)</li>
+                </ol>
+            </ol>
+        </div>
+        <div>When a payment message (1) is initiated by participant A, the payment message is then sent to SWIFT who copy key parts of the payment message and send it to the RBNZ to authorise (2).</div>
+        <div>The RBNZ authorises or refuses the payment message and responds with a system message sent back to SWIFT (3). Based on the RBNZ’s response SWIFT will then either send the authorised payment message to participant B to credit their customer’s account, or send a refusal notification to participant A (4).</div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="5.1">Roles of organisations</div>
+            <ol class="level1">
+                <li>The following table lists some of the organisations involved in the HVCS clearing and settlement process and their role.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="5.2">Roles of systems</div>
+            <ol class="level1">
+                <li>The following table lists some of the systems involved in the HVCS clearing and settlement process and their role.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="5.3">Roles within the sequence of a payment</div>
+            <ol class="level1">
+                <li>is important to be familiar with the terminology used in MX messaging Technical Terms for a definition of the terms below.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="6.1">Legislation, contracts, and standards</div>
+            <ol class="level1">
+                <li>The following table lists some of the legislation, rules, standards, procedures, by-laws, codes and contracts that may apply to clearing and settlement of an HVCS instruction.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="6.2">Technical terms</div>
+            <ol class="level1">
+                <li>The following table lists some of the technical terms used in the HVCS Standards (Appendix 14) procedures. For definitions, see Part 19 of the rules:</li>
+            </ol>
+        </div>
+    </body>
 </html>

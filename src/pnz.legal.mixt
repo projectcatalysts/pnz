@@ -110,8 +110,22 @@ import [
 		html::class( "level3", content )
 	)
 
+	// pnz.legal::level3U creates indented clauses numbered with the style (I) (II)
+	pnz.legal::level3U = (...content as any) => #( ol = 
+		html::class( "level3U", content )
+	)
+
 	pnz.legal::table = (content as table) => #( table = 
 		html::class( "pnz-table", content )
+	)
+
+	pnz.legal::definition_table = (...content as list) => #( table = 
+		html::class(
+			"definition-table"
+			[
+				tbody = content
+			]
+		)
 	)
 
 	pnz.legal::br = #( br = null )
@@ -151,7 +165,8 @@ import [
 		html::class( "bold italic", content )
 	)
 
-
+	// pnz.legal::text configures the content as normal text
+	pnz.legal::text = (content as text) => #( span = content )
 
 	// pnz.legal::rowspan adds a rowspan attribute to table data
 	pnz.legal::rowspan = (rowCount as UInt64.Type) => {

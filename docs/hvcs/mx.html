@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>HVCS MX Procedures</title>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap" rel="stylesheet"/>
+        <link href="../styles/pnz.legal.css" rel="stylesheet"/>
+        <link href="../styles/pnz.hvcs.menu.css" rel="stylesheet"/>
+    </head>
+    <body class="document">
+        <div class="logo">
+            <img src="../images/PNZ_OnWhite_rgb.gif" alt="PNZ Logo"></img>
+        </div>
+        <div>
+            <div class="document-title">Appendix 14D: MX Messaging Procedures</div>
+            <div class="document-meta">Version 2</div>
+            <div class="document-meta">Effective date: 5/05/2025</div>
+        </div>
+        <h1 class="section-heading">Document purpose and overview</h1>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">HVCS rules and procedures overview</div>
+            <ol class="level1">
+                <div>
+                    <p>This document MX Messaging Procedures (Part D) is one part of a suite of documentation to help participants
+			understand what is required to become a high value clearing system (HVCS) participant and how to send and
+			receive individual HVCS instructions and NZD HVCS payments that the participant cannot revoke or reverse after
+			settlement.</p>
+                </div>
+            </ol>
+        </div>
+        <div>
+            <div class="menu-container">
+                <div class="menu-root">
+                    <p>Payments NZ Rules</p>
+                    <p>Part 9</p>
+                    <p>HVCS Clearing and Settlement</p>
+                </div>
+                <div class="menu-branches">
+                    <a href="overview.html" class="menu-branch">
+                        <p>Part A</p>
+                        <p>HVCS Overview</p>
+                    </a>
+                    <a href="common.html" class="menu-branch">
+                        <p>Part B</p>
+                        <p>HVCS Common Procedures</p>
+                    </a>
+                    <a href="scp.html" class="menu-branch">
+                        <p>Part C</p>
+                        <p>SCP Procedures</p>
+                    </a>
+                    <a href="mx.html" class="menu-branch active">
+                        <p>Part D</p>
+                        <p>MX Messaging Procedures (ISO 20022)</p>
+                    </a>
+                    <a href="mt.html" class="menu-branch">
+                        <p>Part E</p>
+                        <p>MT Messaging Procedures (ISO 15022)</p>
+                    </a>
+                    <a href="coexistence.html" class="menu-branch">
+                        <p>Part F</p>
+                        <p>Co-existence Procedures</p>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-caption">Diagram 01: HVCS Rules and Procedures documentation structure</div>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number=""></div>
+            <ol class="level1">
+                <div>
+                    <p>This document should be read in conjunction with the Payments NZ Rules (in particular, Part 9).1 Part 9 contains
+			the HVCS clearing and settlement rules which specify the requirements for participants to create, exchange, 
+			settle, deliver and receive HVCS instructions and make HVCS payments (including SCPs) through HVCS. Part 2 
+			contains the access and participation rules for an entity to join HVCS.</p>
+                    <p>In addition to the Rules, the applicable HVCS standards (Appendix 14) which specify how participants comply
+			with Part 9 are comprised of:</p>
+                    <ul class="bullets">
+                        <li>Part A — HVCS Overview</li>
+                        <ul>
+                            <li>Provides a high-level overview of the HVCS community, message types, how HVCS clearing and settlement
+					works, and the business, technical, and regulatory environment in which the process operates.  This is
+					a non-binding document for use as guidance only.</li>
+                        </ul>
+                        <li>Part B — HVCS Common Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures and product requirements that apply to all HVCS instructions at all times.
+					This document also contains some non-binding commentary and best practice.</li>
+                        </ul>
+                        <li>Part C — SCP Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures and product requirements that apply only to an HVCS instruction that is a
+					same day cleared payment.  This document also contains some non-binding commentary and best practice,
+					such as recommended terms and conditions with customers.</li>
+                        </ul>
+                        <li>Part D — MX Messaging Procedures (this document)</li>
+                        <ul>
+                            <li>Provides binding procedures on how to send and receive MX messages (ie, NZ HVCS ISO 20022 messages)
+					across the HVCS MX CUG.  This document also contains some non-binding commentary and best practice.</li>
+                        </ul>
+                        <li>Part E — MT Messaging Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures on how to send and receive MT messages (ie, NZ HVCS ISO 15022 messages)
+					across the HVCS MT CUG.  This document also contains some non-binding commentary and best practice.</li>
+                        </ul>
+                        <li>Part F — Co-existence Procedures</li>
+                        <ul>
+                            <li>Provides binding procedures for participants during the co-existence phase of the migration from
+					sending and receiving MT messages to MX messages.</li>
+                        </ul>
+                    </ul>
+                </div>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">Standards, best practices and commentary</div>
+            <ol class="level1">
+                <p>
+                    <span>For information on how to determine whether the content of an applicable HVCS Standard in Appendix 14
+			creates binding legal rights or obligations, please see</span>
+                    <span class="italic">Part A - Overview.</span>
+                    <span>Notwithstanding anything in clause 1.8 of the Rules or in Part A - Overview, any reference to actions a
+			person &quot;should&quot; take or anything a person &quot;should&quot; do is intended to convey a best practice with which a
+			person should comply with only, but which has no legal effect</span>
+                </p>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">Document purpose and structure</div>
+            <ol class="level1">
+                <li>This document discusses the MX Messaging Procedures that apply to HVCS instructions. It is recommended if
+		you&apos;re not familiar with the ISO 20022 message format to read ISO for Dummies.</li>
+                <li>This document is divided into eight chapters.</li>
+                <li>Chapter 1 provides an overview on SWIFT tools including MyStandards, the Readiness Portal and the
+		Transaction Manager.</li>
+                <li>Chapter 2 specifies the binding obligations for participants using the MX message format and outlines the
+		in scope MX messages.</li>
+                <li>Chapter 3 introduces key concepts of ISO 20022 including the message structure, agents in a payment,
+		identifying message types and usage guidelines, external code lists, BICs, Distinguished Names, remittance
+		information, structured data, character sets, and payment identifiers.</li>
+                <li>Chapter 4 specifies how to identify Same-day Cleared Payments (SCPs) and how to format the account number
+		for SCPs.</li>
+                <li>Chapter 5 specifies how to represent Direct and Cover payments.</li>
+                <li>Chapter 6 provides more information on payment returns.</li>
+                <li>Chapter 7 provides an overview on Exception and Investigation messages and market practice guidance for
+		elements used in NZ HVCS.</li>
+                <li>Chapter 8 provides an overview on SWIFTNet Y-Copy Messages and message validation.</li>
+            </ol>
+        </div>
+        <div class="tag-standards"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">Interpretation</div>
+            <ol class="level1">
+                <div>
+                    <p>For the purposes of these MX Messaging Procedures, all references to the following defined terms means
+			an HVCS instruction that is an MX message:</p>
+                    <ul class="bullets">
+                        <li>HVCS instruction;</li>
+                        <li>Payment message;</li>
+                        <li>Return message;</li>
+                        <li>Exception and investigation message;</li>
+                        <li>System message;</li>
+                        <li>Customer credit transfer message; and</li>
+                        <li>FI credit transfer message.</li>
+                    </ul>
+                </div>
+            </ol>
+        </div>
+        <h1 class="section-heading">Chapter 1: Introduction to MX message specifications</h1>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.1">MyStandards</div>
+            <ol class="level1">
+                <li>SWIFT maintains the MX Message Specifications on behalf of Payments NZ and participants. The specifications
+		are maintained using SWIFT&apos;s MyStandards tools and published to the MyStandards website.</li>
+                <li>MyStandards is a website licensed by SWIFT to Payments NZ and participants for viewing draft and final
+		standards. It also enables participants to compare the MX Message Specifications to other industry standards
+		such as CBPR+ and HVPS+.</li>
+                <li>You can access Payments NZ&apos;s MyStandards Community here.</li>
+                <li>The MyStandards Help page can be accessed here.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.2">Alignment with CBPR+ and HVCS Rules specifications</div>
+            <ol class="level1">
+                <li>CBPR+ is designed for cross border flows and is the dominant standard referenced in these MX Messaging
+		Procedures.</li>
+                <li>New Zealand&apos;s HVCS Rules are designed for clearing NZD payments between participants.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.3">Intermediaries</div>
+            <ol class="level1">
+                <li>Under ISO 20022, intermediaries need to be bilingual in accordance with the Co-existence Procedures, and:</li>
+                <ol class="level2">
+                    <li>Use CBPR+ for cross border correspondents.</li>
+                    <li>Use the HVCS Rules for domestic settlement.</li>
+                </ol>
+                <li>The following diagram shows the interaction between CBPR+ and MX messages:</li>
+                <ol class="level2">
+                    <li>A cross border correspondent (A) (debtor agent) sends a payment instruction (that aligns to CBPR+ message
+			specifications) to their NZD Vostro account provider (B), who is also a participant.</li>
+                    <li>The participant acting as an intermediary (B) forwards the payment instruction in the form of an MX
+			payment message and settles NZD to another participant (C).</li>
+                    <li>The participant (C) acting as a vostro provider informs their overseas Vostro customer (D) of the payment
+			using a CBPR+ message.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="diagram">
+            <img src="images/hvcs_mx_avp_cug.png" alt="AVP CUG"></img>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.4">Usage Guidelines</div>
+            <ol class="level1">
+                <li>
+                    <span class="bold">A Usage Guideline</span>
+                    <span>is the formal definition for the language used to exchange HVCS instructions and other SWIFT messages.
+				This includes the technical layout of the XML formatted messages, plus the expected content.</span>
+                </li>
+                <li>
+                    <span class="bold">ISO 20022 base standards</span>
+                    <span>are developed by the ISO 20022 Standards Evaluation Group (SEG). ISO 20022 standards are available on
+				SWIFT&apos;s MyStandards website.</span>
+                </li>
+                <li>
+                    <span class="bold">Restrictions</span>
+                    <span>are constraints applied to the ISO 20022 base standard and must be applied such that they do not
+				contradict that standard.  Restrictions are defined by participants of New Zealand&apos;s HVCS in
+				conjunction with Payments NZ and can:</span>
+                    <ul class="bullets">
+                        <li>Prevent use of a non-mandatory element</li>
+                        <li>Make a non-mandatory element mandatory</li>
+                        <li>Restrict the number of occurrences of an element</li>
+                        <li>Restrict data to specific characters or patterns</li>
+                        <li>Define cross-element rules</li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="bold">Usage Guidelines</span>
+                    <span>are a combination of the ISO 20022 base standard message definition plus restrictions that adapted the
+				specifications to meet local market practice.  The Usage Guideline can also include additional commentary
+				to explain how local instructions should be constructed for specific scenarios.  In the New Zealand context,
+				the Usage Guidelines that apply to HVCS are contained in the MX Message Specifications.</span>
+                </li>
+                <li>The MX Message Specifications(also sometimes referred to as message usage guidelines or MUGs), together with
+		sample MX messages, can be found in Payments NZ&apos;s HVCS Community on SWIFT&apos;s MyStandards website and are comprised
+		of different types of rules as described in the diagram below.</li>
+                <div class="diagram">
+                    <img src="images/hvcs_mx_message_usage_guidelines.png" alt="Message Usage Guidelines (MUGs)"></img>
+                </div>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.5">MyStandards exports</div>
+            <ol class="level1">
+                <li>The MyStandards website includes capability to export copies of the MX Message Specifications for offline
+		assessment.</li>
+                <li>The archive contains three files for each MX message:</li>
+                <ol class="level2">
+                    <li>A usage guideline in PDF format,</li>
+                    <li>The MX message specification in XLSX format, and</li>
+                    <li>The MX message specification in XSD format.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.6">Specification versioning</div>
+            <ol class="level1">
+                <li>Specifications are released as a versioned set.</li>
+                <li>Schema changes will always be released with a new date.</li>
+                <li>Technical versions can contain minor corrections to cross-element rules or navigation, though not be used for
+		schema changes.</li>
+                <div class="diagram">
+                    <img src="images/hvcs_mx_mystandards.png" alt="MyStandards"></img>
+                </div>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.7">Content view vs Result view</div>
+            <ol class="level1">
+                <div class="diagram">
+                    <img src="images/hvcs_mx_mystandards_result_view.png" alt="Content View vs Result View"></img>
+                </div>
+                <li>
+                    <span class="bold">Content View</span>
+                    <span>Content View shows the ISO 20022base standard and the restrictions that have been applied to it.</span>
+                </li>
+                <li>
+                    <span class="bold">Result View</span>
+                    <span>shows the MX Message Specifications after restrictions have been applied to the ISO 20022 base
+				standard. Comments specify intended HVCS usage.</span>
+                </li>
+                <li>Once the MX Message Specifications have been opened, it is suggested participants view the specifications in
+		Results View.  Results View shows only the agreed specifications whereas Content (View) shows all differences
+		when compared to the underlying ISO 20022 base standard.</li>
+                <li>Participants may search the message to find specific elements or click into the elements to explore the hierarchy.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.8">MyStandards compare function</div>
+            <ol class="level1">
+                <li>Participants may want to determine the differences between the variants of a message. This comparison can be
+		performed directly in MyStandards using the Compare function to:</li>
+                <ol class="level2">
+                    <li>compare different versions of the same message from the same publisher (e.g., comparing the pacs.008 from MX
+			Message Specifications 20220721 Technical Version 1 vs MX Message Specifications 20220721 Technical Version
+			4); or</li>
+                    <li>compare different versions of the same message from different publishers (e.g., compare the pacs.008 from
+			CBPR+ against the MX Message Specifications).</li>
+                </ol>
+                <li>SWIFT provides detailed instructions on how to complete this on their MySWIFT Knowledge Centre.</li>
+                <li>Since there is potential for MX Message Specifications versions to change, participants should perform a fresh
+		comparison directly from MyStandards when required, rather than storing comparisons, which may become out of date.</li>
+                <li>As the functionality to compare versions from different publishers is enabled only for users accessing MyStandards
+		with a paid licence, the comparison between the MX Message Specifications and the CBPR+ equivalent has been
+		completed and attached to the collection in MyStandards. These comparisons will be updated when there is a change
+		in either underlying specification.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.9">Readiness portal</div>
+            <ol class="level1">
+                <li>The Readiness Portal is an extension to MyStandards that participants can use to accelerate development and
+		verification of conformance to the new standards.</li>
+                <li>A separate Readiness Portal has been created for each participant. Please email iso20022@paymentsnz.co.nz to
+		request access your organisation&apos;s Readiness Portal. Once access has been enabled, the Readiness Portal will appear
+		on your MyStandards home screen.</li>
+                <li>The Readiness Portal enables participants to test messages against the MX Message Specifications with immediate
+		validation that an HVCS instruction conforms not only the ISO 20022 base standard, but also additional restrictions
+		defined in the MX Message Specifications.</li>
+                <li>Results will alert users if they have returned an invalid HVCS instruction and highlight areas in the HVCS
+		instruction that are incorrect, explaining what the error is against the MX Message Specifications.</li>
+                <li>Textural rules and guidance are not validated in the Readiness Portal.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.10">Transaction Manager</div>
+            <ol class="level1">
+                <li>SWIFT&apos;s Transaction Manager platform will provide a set of centralised common transaction processing services
+		that today are typically provided by each financial institution in a distributed manner. Transaction Manager scope
+		is limited to cross border payments and does not currently monitor payments sent across local market infrastructure.</li>
+                <li>The platform will ensure interoperability between users of different data formats and connectivity channels, but
+		those that want to unlock the full benefits of richer data and advanced platform features will need to implement
+		ISO 20022 and APIs.</li>
+                <li>Intermediaries will be able to receive their choice of API, MX or MX with embedded MT for different back office
+		system applications or purposes. If the embedded MT format is chosen, some loss of data may occur in the MT message
+		itself, but full message details can be accessed via the Transaction Manager or in the MX portion of the message.</li>
+                <li>Banks must maintain the ability to support cross-border MT traffic independently of the Transaction Manager until
+		2025, although SWIFT may enhance the platform to include MT messaging in future.</li>
+                <li>For more information on the Transaction Manager, including the build-up of traffic and a list of rich data see
+		Part F — Co-existence Procedures, chapter 5.</li>
+            </ol>
+        </div>
+        <h1 class="section-heading">Chapter 2: MX message specification</h1>
+        <div class="tag-standards"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.1">MX message requirements</div>
+            <ol class="level1">
+                <li>Participants must refer to MyStandards for detailed MX Message Specifications and in conjunction with Part F
+		— Co-existence Procedures must:</li>
+                <ol class="level2">
+                    <li>send MX messages that conform with this part D and the MX Message Specifications, and</li>
+                    <li>receive and process MX messages that conform with this Part D and the MX Message Specifications.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.2">Instructing agent validation</div>
+            <ol class="level1">
+                <li>
+                    <span>An instructing agent that utilises gateway products provided by SWIFT such as SWIFT Alliance Access
+				(SAA) or Alliance Message Hub (AMH)</span>
+                    <span class="bold">must</span>
+                    <span>validate that the MX messages it sends conform to the approved MX Message Specifications</span>
+                </li>
+                <li>To comply with sub-clause (1), the instructing agent must use an approved version of the local usage
+		guideline validation packages provided by SWIFT before sending an MX message on the SWIFT network.</li>
+                <li>An instructing agent that utilises gateway products not provided by SWIFT must validate that the MX messages
+		it sends conform to the MX Message Specifications before sending these MX messages on the SWIFT network.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.3">Instructed agent validation</div>
+            <ol class="level1">
+                <li>Subclause (2) applies to a participant who receives an SCP and is also the creditor agent for the message.</li>
+                <li>The instructed agent must do the following to validate the content of Creditor Account before crediting the
+		amount of the HVCS payment to the creditor&apos;s account:</li>
+                <ol class="level2">
+                    <li>if the Creditor Account contains an account number for the creditor but no BIC, the instructed agent must
+			ensure that the account number is a valid NZ account number by—</li>
+                    <ol class="level3">
+                        <li>performing interchange number and branch number interlock checking; and</li>
+                        <li>ensuring that the account number passes check digit validation in accordance with the SBI standards:
+				BACHO account numbers:</li>
+                    </ol>
+                    <li>if the Creditor Account contains a credit card number or a scheme debit card number but no BIC, the
+			instructed agent must ensure that the card number is valid by checking the issuer identification number
+			(IIN) and the account check digit using the modulus 10 algorithm.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.4">Charges for cross border redirections</div>
+            <ol class="level1">
+                <li>an instructing agent proposes to deduct a charge from an inward cross border redirection before sending the
+		HVCS payment to the AVP MX CUG transaction delivery system for settlement,—</li>
+                <ol class="level2">
+                    <li>SWIFT requirements apply to the Interbank Settlement Amount, Instructed Amount and Exchange Rate plus the
+			associated charges fields of Charge Bearer and Charges Information and</li>
+                    <li>the amount of the charge is determined by the instructing agent and its overseas customer.</li>
+                </ol>
+                <li>instructed agent that receives a cross border redirection must not deduct a charge from the HVCS payment.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.5">Cross border redirection: Charge Bearer contains DEBT (NZD or converted to NZD)</div>
+            <ol class="level1">
+                <li>
+                    <span class="bold">Situation 1:</span>
+                    <span>Charge Bearer contains DEBT (NZD or converted to NZD).</span>
+                </li>
+                <li>
+                    <span class="bold">Case 1:</span>
+                    <span>Charges Information is present: If Charges Information is present,—</span>
+                </li>
+                <ol class="level2">
+                    <li>amount specified in Charges Information is the amount of the charge; and</li>
+                    <li>the amount in the Interbank Settlement Amount of the redirected message by the amount in Charges Information
+			that is owed by referencing the BIC identified in the Agent sub-element of the Charges Information field; and</li>
+                    <li>content of Charge Bearer in the redirected message should remain as DEBT; and</li>
+                    <li>content of the Charges Information field should remain unchanged throughout the entire payment chain.</li>
+                </ol>
+                <li>
+                    <span class="bold">Case 2:</span>
+                    <span>Charges Information is not present:  If Charges Information is not present,—</span>
+                </li>
+                <ol class="level2">
+                    <li>instructing agent may claim a charge from the debtor agent, but must not deduct the charge from the amount
+			of the cross border redirection; and</li>
+                    <li>content of Charge Bearer in the redirected message should remain as DEBT.</li>
+                    <li>currency transactions redirected after conversion to NZD:  If an instructing agent proposes to deduct a charge
+			from the Interbank Settlement Amount of a cross border redirection (even if Charge Bearer contains DEBT) the
+			following applies—</li>
+                    <ol class="level3U">
+                        <li>if the Instructed Amount (currency/instructed amount) is present on the inward cross border redirection,
+				the instructing agent must—</li>
+                        <ol class="level3">
+                            <li>deduct the charge from the amount in Interbank Settlement Amount with no action on the Instructed
+					Amount; and</li>
+                            <li>create a new Charges Information element (instructing agent&apos;s charges) and set Charge Bearer in the
+					redirected message to CRED (if the instructing agent does not create a new Charges Information element,
+					the instructing agent must set the Charge Bearer to SHAR); and</li>
+                            <li>enter the charge deducted from the Interbank Settlement Amount in new Instruction Information element;
+					or</li>
+                        </ol>
+                        <li>if the Instructed Amount (currency/instructed amount) is not present on the inward cross-border redirection,
+				the instructing agent must—</li>
+                        <ol class="level3">
+                            <li>create new Instructed Amount element containing the amount in the Interbank Settlement Amount of the
+					inward cross-border message; and</li>
+                            <li>create a new Instruction Information element (instructing agent&apos;s charges) and set the Charge Bearer
+					in the redirected message to CRED (if the instructing agent does not create an Instruction Information
+					element, the instructing agent must set the Charge Bearer SHAR); and</li>
+                            <li>enter the charge deducted from the Interbank Settlement Amount in new Instruction Information element.</li>
+                        </ol>
+                    </ol>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.6">Cross border redirection: Charge Bearer CRED or SHAR</div>
+            <ol class="level1">
+                <li>
+                    <span class="bold">Situation 2:</span>
+                    <span>Charge Bearer CRED or SHAR.</span>
+                </li>
+                <li>an instructing agent proposes to deduct a charge from an inward cross border redirection before sending the HVCS
+		payment to the AVP MX CUG transaction delivery system for settlement, the following rules apply:</li>
+                <ol class="level2">
+                    <li>if the Instructed Amount is not present on the inward cross border redirection and the instructing agent
+			proposes to deduct the charge from the Interbank Settlement Amount, the instructing agent must create new
+			Instructed Amount element containing the Interbank Settlement Amount of the inward cross border redirection:</li>
+                    <li>if the Instructed Amount is present on the inward cross border redirection, the instructing agent must deduct
+			the charge from the Interbank Settlement amount with no action on Instructed Amount:</li>
+                    <li>the instructing agent must create new Instruction Information element and enter the amount deducted:</li>
+                    <li>the instructing agent should leave the Charge Bearer unchanged as CRED or SHAR.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.7">Messages for HVCS payments</div>
+            <ol class="level1">
+                <div>
+                    <p>Participants use the payment message types described in the following table to clear and settle HVCS payments:</p>
+                </div>
+                <table class="pnz-table">
+                    <thead>
+                        <th>Message type</th>
+                        <th>Message name</th>
+                        <th>Sender</th>
+                        <th>Receiver</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>pacs.008</td>
+                            <td>Single customer credit transfer</td>
+                            <td>Participant</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>pacs.009</td>
+                            <td>General financial institution transfer</td>
+                            <td>Participant</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>pacs.009 COV</td>
+                            <td>General financial institution transfer</td>
+                            <td>Participant</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>pacs.004</td>
+                            <td>Payment return</td>
+                            <td>Participant</td>
+                            <td>Participant</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.8">Other SWIFTNet message types</div>
+            <ol class="level1">
+                <div>
+                    <p>The Reserve Bank and SWIFT use the system messages described in the following table to process HVCS
+			instructions.:</p>
+                </div>
+                <table class="pnz-table">
+                    <thead>
+                        <th>Message type</th>
+                        <th>Message name</th>
+                        <th>Sender</th>
+                        <th>Receiver</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>xsys.002</td>
+                            <td>Y-Copy Authorisation Notification</td>
+                            <td>SWIFT</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>xsys.003</td>
+                            <td>Y-Copy Refusal Notification</td>
+                            <td>SWIFT</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>xcop.xxx</td>
+                            <td>SWIFTNet Copy message</td>
+                            <td>SWIFT</td>
+                            <td>Reserve Bank</td>
+                        </tr>
+                        <tr>
+                            <td>xsys.001</td>
+                            <td>Y-Copy Authorisation of Approval</td>
+                            <td>Reserve Bank</td>
+                            <td>SWIFT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.9">Other FIN message types</div>
+            <ol class="level1">
+                <div>
+                    <p>Participants exchange the MX message types described in the following table:</p>
+                </div>
+                <table class="pnz-table">
+                    <thead>
+                        <th>Message type</th>
+                        <th>Message name</th>
+                        <th>Sender</th>
+                        <th>Receiver</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>camt.056</td>
+                            <td>FI to FI Payment Cancellation Request</td>
+                            <td>Participant</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>camt.029</td>
+                            <td>Resolution of Investigation</td>
+                            <td>Participant</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>xsys.011</td>
+                            <td>Delivery notification</td>
+                            <td>SWIFT</td>
+                            <td>Participant</td>
+                        </tr>
+                        <tr>
+                            <td>xsys.010</td>
+                            <td>Non-Delivery Warning</td>
+                            <td>SWIFT</td>
+                            <td>Participant</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ol>
+        </div>
+        <h1 class="section-heading">Chapter 3: ISO 20022 key concepts</h1>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.1">ISO 20022 message structure</div>
+            <ol class="level1">
+                <div class="diagram">
+                    <img src="images/hvcs_mx_message_structure.png" alt="MX Message Structure"></img>
+                </div>
+                <table class="definition-table">
+                    <tbody>
+                        <tr>
+                            <td>SWIFTNet Header</td>
+                            <td>Amongst other things, SWIFTNet Headers include RequestControl, RequestResponse, ExchangeRequest, Request,
+				and RequestHeader. They provide information to SWIFT on how to deliver the ISO 20022 message, configure
+				security elements and detail whether a delivery receipt is required.</td>
+                        </tr>
+                        <tr>
+                            <td>Request Payload</td>
+                            <td>The RequestPayload is the container for the business message and consists of the Business Application
+				Header and the Business Document.</td>
+                        </tr>
+                        <tr>
+                            <td>Business Application Header</td>
+                            <td>The Business Application Header describes at a high level what the Business Document contains.  It is
+				intended to be used for routing purposes, plus identify the specific Usage Guideline to be used for message
+				validation (the MX Message Specification in the case of HVCS).</td>
+                        </tr>
+                        <tr>
+                            <td>Business Document</td>
+                            <td>The Business Document contains the ISO 20022 message, defined by an XML schema in alignment with ISO 20022
+				standards. The MX message instance has a maximum payload of 100,000 bytes.</td>
+                        </tr>
+                        <tr>
+                            <td>Crypto</td>
+                            <td>Crypto forms part of the InterAct request. SWIFT Alliance Gateway (SAG) will create the authorisation
+				context automatically and populate this element when processing the message.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.2">Identifying message types and usage guidelines</div>
+            <ol class="level1">
+                <li>The combination of the Message Definition Identifier and the Usage Identifier are used to identify the Message
+		Usage Guideline (MUG) as set out in the MX Message Specifications for each message.</li>
+                <table class="pnz-table">
+                    <thead>
+                        <th>Message Def&apos;n ID / Request Type</th>
+                        <th>Usage Identifier / Request Subtype</th>
+                        <th>Message Usage Guideline (MUG)</th>
+                        <th>Description</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>pacs.008.001.09</td>
+                            <td>pnz.hvcs.01</td>
+                            <td>pacs_008</td>
+                            <td>
+                                <li>Domestic payment to a customer — SCP</li>
+                                <li>Domestic payment to a customer — non SCP</li>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>pacs.008.001.09</td>
+                            <td>pnz.hvcs.xbrdr.01</td>
+                            <td>pacs_008_xbrdr</td>
+                            <td>Cross-border payment to a customer</td>
+                        </tr>
+                        <tr>
+                            <td>pacs.004.001.10</td>
+                            <td>pnz.hvcs.01</td>
+                            <td>pacs_004</td>
+                            <td>
+                                <li>Return of domestic payment to a customer — SCP</li>
+                                <li>Return of domestic payment to a customer — non SCP</li>
+                                <li>Return of an FI to FI domestic payment</li>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>pacs.004.001.10</td>
+                            <td>pnz.hvcs.xbrdr.01</td>
+                            <td>pacs_004_xbrdr</td>
+                            <td>
+                                <li>Return of cross-border payment to an overseas customer</li>
+                                <li>Return of an FI to FI cross-border payment</li>
+                                <li>Return of an FI to FI cross-border cover payment</li>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>pacs.009.001.09</td>
+                            <td>pnz.hvcs.01</td>
+                            <td>pacs_009</td>
+                            <td>FI to FI domestic payment</td>
+                        </tr>
+                        <tr>
+                            <td>pacs.009.001.09</td>
+                            <td>pnz.hvcs.cov.01</td>
+                            <td>pacs_009_cov</td>
+                            <td>FI to FI domestic cover payment</td>
+                        </tr>
+                        <tr>
+                            <td>pacs.009.001.09</td>
+                            <td>pnz.hvcs.xbrdr.01</td>
+                            <td>pacs_009_xbrdr</td>
+                            <td>FI to FI cross-border payment</td>
+                        </tr>
+                        <tr>
+                            <td>pacs.009.001.09</td>
+                            <td>pnz.hvcs.xbrdr.cov.01</td>
+                            <td>pacs_009_cov_xbrdr</td>
+                            <td>FI to FI cross-border cover payment</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <li>The Request Type and Message Definition Identifier must contain the same values. The Request Subtype and
+		Business Service must contain the same values.</li>
+                <li>The Request Type is from the Request Header/BAH and the Message Definition Identifier is from the Business
+		Document.  These elements contain the same values as the BAH can be used for routing without the need to first
+		review the business document.  Please note, the pictures on the right and left are depicting the same thing;
+		one conceptually, the other provides an example.</li>
+            </ol>
+        </div>
+        <div class="diagram">
+            <img src="images/hvcs_mx_request_type_subtype.png" alt="Request Types and Subtypes"></img>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.3">External code lists</div>
+            <ol class="level1">
+                <div>
+                    <p>Several elements within the MX Message Specifications refer to &apos;External Code Lists&apos;. These code lists are
+			 maintained by SWIFT (through their quarterly release cycle) and are published for use here. Unless otherwise
+			 stated in the MX Message Specifications, the HVCS does not restrict use of any of these codes.</p>
+                </div>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.4">BICs</div>
+            <ol class="level1">
+                <li>The BIC element will form a mandatory component in the SWIFTNet Header and BAH. The BIC must be a production BIC
+		and contain 11 characters, either BIC11 or BIC8 + &apos;XXX&apos;. The BIC8 used in both of these message components must
+		be identical in specific fields as outlined below, and published in the SWIFTNet Directory. Note that the
+		3-character Branch Identifier may be published or unpublished.</li>
+                <li>SWIFT will undertake central validation to ensure that the BIC8 is used in the SWIFTNet Header and the BAH are
+		published but will not conduct consistency checking that the two elements are identical.</li>
+                <li>SWIFT will undertake central validation to ensure that any BICs used in the Business Document are valid.  Both
+		connected and non-connected BICs are allowed.</li>
+                <li>Consistency checking of the BIC8 in payment messages will be undertaken within RTGS as follows:</li>
+                <ol class="level2">
+                    <li>The BIC8 in the Sender DN of the SWIFTNet Header must be identical to the corresponding BIC8 in the From
+			elements of the BAH; and</li>
+                    <li>The BIC8 in the From element of the BAH must be identical to the corresponding BIC8 in the instructing agent
+			of the message payload unless the message is generated using the ESAS FSI function (sender BIC is prefixed with
+			RBNZNZ);</li>
+                </ol>
+                <li>This means that, although messages may pass SWIFT validation, they will be rejected by RTGS if they do not pass the
+		consistency checking. In the case of delivery failure, the reason code provided in the xsys.003 message will be RC05
+		(Invalid BIC Identifier). The full list of rejection codes is available on the RBNZ Confluence website.</li>
+                <li>The BIC elements are expected to be the same except for the following circumstances:</li>
+                <ol class="level2">
+                    <li>when the Copy/Duplicate indicator is set to COPY or CODU,</li>
+                    <li>when the sender BIC is prefixed with RBNZNZ.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.5">Distinguished name structure</div>
+            <ol class="level1">
+                <li>The RBNZ have decided to adopt the Distinguished Name (DN) structure for transport of FINplus / CBPR+ messages.</li>
+                <li>To enable ISO 20022 to work for multiple use cases and independent of networks, the general convention is to use DNs
+		to specify sender and receiver information. This will enable SWIFT to implement a consistency check between the
+		Interact Headers and the Business Application Headers for the Sender and Receiver.</li>
+                <li>The sender and receiver address in FIN message services will be based on BIC11. However, for InterAct messaging
+		services, they will be based on DNs, namely Requestor DN and Responder DN. Further information can be accessed via
+		SWIFT.com Knowledge Centre SWIFTNet Name and Addressing Guide.</li>
+                <li>A DN follows a hierarchical naming principle and consists of LDAP attributes like cn (common name) ou
+		(organizational unit) uid (user identifier) and o (organization). These are given in comma separated order of hierarchy
+		whereby the left value is the lowest most local and specific identifier moving up to the value on the right which is the
+		top-level parent e.g., cn=invfunds, ou=80a, o=creschzz, o=swift. All values should be written in lowercase.</li>
+                <li>In the example below, the top level is SWIFT, followed by the BIC8 of the bank, and then specifying further levels to
+		help route the message to the correct internal recipient of the bank.</li>
+                <div class="diagram">
+                    <img src="images/hvcs_mx_distinguished_names.png" alt="Distinguised Names"></img>
+                </div>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.6">Distinguished name registry</div>
+            <ol class="level1">
+                <li>New participants joining the AVP MX CUG will need to specify their DN for message addressing and place the SWIFT e-order
+		required to join the AVP MX CUG.</li>
+                <li>DNs are service specific and must be used with the matching service and messages.</li>
+                <li>When participants register for the AVP MX CUG, they also define one or more DNs that can then be used to identify the
+		participant within the service.</li>
+                <li>Published and previously registered DNs for the test AVP MX CUG can be found on the RBNZ Confluence website</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.7">Legal Entity Identifier</div>
+            <ol class="level1">
+                <li>The Legal Entity Identifier (LEI) is a 20-character, alpha-numeric code, designed to uniquely identify legally distinct
+		entities that engage in financial transactions. It requires annual verification, carries useful information about company
+		structure, and is the globally recognized ISO 17442 standard.</li>
+                <li>This is an optional element within the HVCS, however, if used, the LEI must be used in combination with Account number or
+		BIC or Name and Address to keep usage consistent with CBPR+.</li>
+                <li>The Payments Market Practice Group (PMPG) have provided extensive guidance in their paper Global adoption of the LEI
+		(Legal Entity Identifier) in ISO 20022 payment messages.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.8">Remittance information (pacs.008 and pacs.004)</div>
+            <ol class="level1">
+                <li>There is a dedicated Remittance Information element within the MX Message Specifications. A payment message may contain no
+		remittance information, though if included, structured or unstructured may be used but not both.</li>
+                <li>Unstructured remittance information &lt;RmtInf/Ustrd&gt; allows 1x140 characters (to align with HVPS+ and CBPR+).</li>
+                <div class="tag-standards"></div>
+                <li>Structured remittance information &lt;RmtInf/Strd&gt; must only be used for HVCS payments when it has been bilaterally or
+		multilaterally agreed (to align with HVPS+).</li>
+                <div class="tag-commentary"></div>
+                <li>Structured remittance information should be limited to 9000 characters excluding the tags (ie, 9000 characters of business
+		data only and including 3x140 characters in the Additional Remittance Information &lt;AddtlRmtInf&gt; element).</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.9">HVCS structured address line formatting</div>
+            <ol class="level1">
+                <li>This section provides guidance for how the schema should be used to transport New Zealand addresses containing debtor and
+		creditor address information for all HVCS payments, including exclusively  domestic payments and the domestic element of
+		cross border payments. The guidance below is to be followed when structured address line formatting is used.</li>
+                <li>The guidance will be used by financial institutions both in New Zealand and overseas for the transmission of a New Zealand
+		address within any ISO 20022 Usage Guideline. This aspect is important, because the address may be first placed into an ISO
+		20022 format in an overseas market infrastructure before transitioning to CBPR+ and then to NZ HVCS as part of its journey
+		through the chain of agencies.</li>
+                <li>The Payments Market Practice Group (PMPG) publish the structured address format guidance for each country to SWIFT&apos;s
+		Document Centre. See ISO 20022 Structure Postal Address to download this. Note the content of the document is not validated
+		anywhere on the SWIFT network.</li>
+                <li>Non-location addresses (for example PO Box addresses, Private Bags, Lobbies etc.) do not form part this guidance for debtor
+		and creditor identification because they are not expected to be used for this purpose.</li>
+                <li>Please note for the schema elements listed below:</li>
+                <ol class="level2">
+                    <li>M = Mandatory, O = Optional, E = Expected.</li>
+                    <li>Expected should not be interpreted as Mandatory; there will always be scenarios where expectations cannot be met.</li>
+                </ol>
+            </ol>
+        </div>
+        <table class="pnz-table">
+            <thead>
+                <th>Level</th>
+                <th>ISO 20022 tag</th>
+                <th>Element name</th>
+                <th>Definition</th>
+                <th>Usage</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2</td>
+                    <td>&lt;Dbtr&gt; or &lt;Cdtr&gt;</td>
+                    <td>Debtor or Creditor</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>&lt;Nm&gt;</td>
+                    <td>Name</td>
+                    <td></td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>&lt;PstlAdr&gt;</td>
+                    <td>Postal Address</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;Dept&gt;</td>
+                    <td>Department</td>
+                    <td>Identification of a division of a large organisation or building.</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;SubDept&gt;</td>
+                    <td>Sub Department</td>
+                    <td>Identification of a sub-division of a large organisation or building.</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;StrtNm&gt;</td>
+                    <td>Street Name</td>
+                    <td>Name of a street or thoroughfare</td>
+                    <td>E</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;BldgNb&gt;</td>
+                    <td>Building Number</td>
+                    <td>Number that identifies the position of a building on a street. Can be used where a building number contains
+					multiple sites. For example, a single address that covers sites 234-238. Multiple types of characters can be
+					used to identify the range of sites, such as &apos;-&apos; &apos;&amp;&apos; &apos;,&apos;. If the address contains a unit number (ie a flat
+					number or apartment number) this is entered into the &lt;Room&gt; field.</td>
+                    <td>E</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;BldgNm&gt;</td>
+                    <td>Building Name</td>
+                    <td>Name of the building or house.</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;Flr&gt;</td>
+                    <td>Floor</td>
+                    <td>Floor or story within a building. Recommended where multiple different entities reside on different floors in
+					the same building.</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;PstBx&gt;</td>
+                    <td>Post Box</td>
+                    <td>Numbered box in a post office, assigned to a person or organisation, where letters are kept until called for.
+					Non-compliant for the debtor and creditor address information because a physical address is expected to be used.</td>
+                    <td>Not to be used</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;Room&gt;</td>
+                    <td>Room</td>
+                    <td>Expected where the address is a unit (apartment, flat or shop number). This room or unit number can be
+					derived from an address that contains the &apos;/&apos; character. The number preceding the &apos;/&apos; is the room or unit.</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;PstCd&gt;</td>
+                    <td>Post Code</td>
+                    <td>Identifier consisting of a group of letters and/or numbers that is added to a postal address to assist the sorting of mail.</td>
+                    <td>E</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;TwnNm&gt;</td>
+                    <td>Town Name</td>
+                    <td>Name of a built-up area, with defined boundaries, and a local government. Town/City as per SWIFT and the
+					NZ Police Prescribed Transactions Reporting requirements.</td>
+                    <td>M</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;TwnLctnNm&gt;</td>
+                    <td>Town Location Name</td>
+                    <td>Specific location name within the town. Used for the Suburb</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;DstrctNm&gt;</td>
+                    <td>District Name</td>
+                    <td>Identifies a subdivision within a country sub-division. Used where a district name is provided to give
+					extra information about the location. More likely to be used for addresses in rural areas.</td>
+                    <td>O</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;CtrySubDvsn&gt;</td>
+                    <td>Country Sub Division</td>
+                    <td>Identifies a subdivision of a country such as state, region, county. Province names and regions
+					should not be part of the address based upon the Universal Postal Union (UPU) guidance.</td>
+                    <td>Not to be used</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>&lt;Ctry&gt;</td>
+                    <td>Country</td>
+                    <td>Nation with its own government</td>
+                    <td>M</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.10">Using payment message identifiers</div>
+            <ol class="level1">
+                <div class="diagram">
+                    <img src="images/hvcs_mx_payment_message_identifiers.png" alt="Payment Message Identifiers"></img>
+                </div>
+                <li>Payment messages can be passed serially between each agent in the payment chain and contain:</li>
+                <ol class="level2">
+                    <li>Point-to-point (P2P) elements which are passed between one party to the next, and are not necessarily
+			passed on in subsequent payment messages (for example, the Instruction Identification); and</li>
+                    <li>End-to-end elements (E2E) which are passed unchanged through the entire payment life cycle to all
+			subsequent payment messages (for example, the UETR).</li>
+                </ol>
+                <li>A number of mandatory end-to-end elements contained within Payment Identification are used to uniquely
+		identify pacs.008, pacs.009, pacs.009 COV and pacs.004 payment throughout its lifecycle.</li>
+                <li>The pacs.004 message utilises point to point identifiers in respect of the specific return message
+		(Return ID) as well as from the underlying HVCS payment that is being returned within Original Group
+		Information.</li>
+                <li>The Instruction Identification must be populated with a unique reference for each ESAS settlement
+		transaction per ESAS Business Day, as the RBNZ performs duplicate validation on the Instruction
+		Identification reference.</li>
+                <li>The Instruction Identification has been restricted to 16 characters using a formal rule, however,
+		HVCS has retained the 35-character length so that the specifications can be relaxed (e.g., end of
+		coexistence and support for MT message translation) without making a change to the schema.</li>
+                <li>The clearing system reference is not used; this can be found in the third party to receiver/sender
+		information</li>
+                <li>A summary of payment message identifiers can be found in the table below</li>
+            </ol>
+        </div>
+        <table class="pnz-table">
+            <thead>
+                <th>Message</th>
+                <th>Path</th>
+                <th>Identifier</th>
+                <th>Mandatory / Optional</th>
+                <th>Point to Point (P2P) or End to End (E2E)</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="4">pacs.008</td>
+                    <td rowspan="4">CdtTrfTxInf / PmtId</td>
+                    <td>Instruction Identification</td>
+                    <td>M</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td>End To End Identification</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td>Transaction Identification</td>
+                    <td>O</td>
+                    <td>E2E (in the interbank chain)</td>
+                </tr>
+                <tr>
+                    <td>UETR</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">pacs.009 CORE</td>
+                    <td rowspan="4">CdtTrfTxInf / PmtId</td>
+                    <td>Instruction Identification</td>
+                    <td>M</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td>End To End Identification</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td>Transaction Identification</td>
+                    <td>O</td>
+                    <td>E2E (in the interbank chain)</td>
+                </tr>
+                <tr>
+                    <td>UETR</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">pacs.009 COV</td>
+                    <td rowspan="4">CdtTrfTxInf / PmtId</td>
+                    <td>Instruction Identification</td>
+                    <td>M</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td>End To End Identification (from pacs.008)</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td>Transaction Identification</td>
+                    <td>O</td>
+                    <td>E2E (in the interbank chain)</td>
+                </tr>
+                <tr>
+                    <td>UETR (from pacs.008)</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td rowspan="9">pacs.004</td>
+                    <td>TxInf</td>
+                    <td>Return Identification</td>
+                    <td>M</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">TxInf / OrgnlGrpInf (optional)</td>
+                    <td>Original Message Identification</td>
+                    <td>M</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td>Original Message Name Identification</td>
+                    <td>M</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td>Original Creation Date Time</td>
+                    <td>O</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">TxInf</td>
+                    <td>Original Instruction Identification</td>
+                    <td>M</td>
+                    <td>P2P</td>
+                </tr>
+                <tr>
+                    <td>Original End To End Identification</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td>Original Transaction Identification</td>
+                    <td>O</td>
+                    <td>E2E (in the interbank chain)</td>
+                </tr>
+                <tr>
+                    <td>Original UETR</td>
+                    <td>M</td>
+                    <td>E2E</td>
+                </tr>
+                <tr>
+                    <td>Original Clearing System Reference</td>
+                    <td>O</td>
+                    <td>E2E</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.11">ISO 20022 base standards</div>
+            <ol class="level1">
+                <li>All MX message elements which are defined (by data type) as text are restricted to FIN X Characters:</li>
+                <ol class="level2">
+                    <span class="bold">a-z A-Z 0-9 / - ? : ( ) . , &apos; + CrLf Space</span>
+                </ol>
+                <li>
+                    <span>The following special characters:</span>
+                    <span class="bold">! # $ % &amp; &apos; * = ? ^ _ ` { | } ~ &quot; ( ) ; &lt; &gt; @ [ \ ]</span>
+                    <span>are additionally allowed in:</span>
+                </li>
+                <ol class="level2">
+                    <li>all party (agents and non-agents) Name and Address elements;</li>
+                    <li>the Related Remittance Information &lt;RltdRmtInf&gt; element; and</li>
+                    <li>the Remittance Information &lt;RmtInf&gt; element.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.12">CBPR+ character sets</div>
+            <ol class="level1">
+                <li>While ISO 20022 base standards support non-Latin characters, CBPR+ will only
+		support Latin characters in the initial service implementation.</li>
+                <li>Non-Latin characters (including Mandarin, Cantonese, Arabic, Cyrillic character
+		 etc.) are not to be used. Translation of these, or any special character (noting
+		 exceptions above) will be represented by a . (Full Stop).</li>
+                <li>Participants needing to exchange information containing non-Latin characters will
+		need to make arrangements to do so outside the AVP MX CUG.</li>
+                <li>The special characters $ and &gt; &lt; signs are enabled for the Email Address elements.</li>
+                <li>Currencies in the payments should be expressed in ISO Currency Codes only (3-Characters, e.g. EUR).</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.13">HVCS character sets</div>
+            <ol class="level1">
+                <li></li>
+                <li>
+                    <span>The character sets used within the HVCS specifications are aligned to CBPR+ though
+				extended to support upper case and lower case Te Reo Māori macron characters within
+				the Name, Address and Remittance elements.  This technical capability for Te Reo is
+				for future proofing only and</span>
+                    <span class="bold">macrons must not be used</span>
+                    <span>by participants in accordance
+				with the MX Message Specifications.</span>
+                </li>
+                <li>The following table shows the macron characters that are included in the MX message
+		specification along with their Unicode value:</li>
+                <table class="pnz-table">
+                    <thead>
+                        <th>Latin lowercase letter with macron</th>
+                        <th>Lowercase Unicode value</th>
+                        <th>Latin uppercase letter with macron</th>
+                        <th>Uppercase Unicode value</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ā</td>
+                            <td>0101</td>
+                            <td>Ā</td>
+                            <td>0100</td>
+                        </tr>
+                        <tr>
+                            <td>ē</td>
+                            <td>0113</td>
+                            <td>Ē</td>
+                            <td>0112</td>
+                        </tr>
+                        <tr>
+                            <td>ī</td>
+                            <td>012b</td>
+                            <td>Ī</td>
+                            <td>012a</td>
+                        </tr>
+                        <tr>
+                            <td>ō</td>
+                            <td>014d</td>
+                            <td>Ō</td>
+                            <td>014c</td>
+                        </tr>
+                        <tr>
+                            <td>ū</td>
+                            <td>016b</td>
+                            <td>Ū</td>
+                            <td>016a</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <p>Emojis are not permitted in the HVCS Rules.</p>
+                </div>
+            </ol>
+        </div>
+        <h1 class="section-heading">Chapter 4: Same-day Cleared Payments</h1>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="4.1">Identifying SCPs</div>
+            <ol class="level1">
+                <li>Domestic customer credit transfers require explicit classification within pacs.008 MX messages to trigger treatment as a Same-day Cleared Payment.</li>
+                <li>To classify the payment as an SCP, the Local Instrument / Code element of a pacs.008 must be set to the value &apos;SDCL&apos; (Same Day Clearing).</li>
+                <li>If the payment message is not intended to be classified as an SCP (as described in clause 9.1(2)(a)(ii) of the Rules) the Local Instrument element can be omitted from the pacs.008 message.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="4.2">SCP account number format</div>
+            <ol class="level1">
+                <li>The following account number restrictions apply to Same-day Cleared Payments where the SCP does not specify a BIC for the creditor:</li>
+                <ol class="level2">
+                    <li>The scheme name (DbtrAcct / Id / Other / SchmeNm / Cd) should be populated where the identifier represents a NZ Basic Bank Account, a Debit Card or a Credit Card using one of the following values:</li>
+                    <ol class="level3">
+                        <li>BBAN — Basic Bank Account Number identification</li>
+                        <li>AIIN — Card Issuer Identification Number</li>
+                        <li>Scheme Name should be omitted or use a Proprietary value (enabled through bilateral agreement) where the identifier represents something other than a BBAN or AIIN.</li>
+                    </ol>
+                    <li>Where Scheme Name = BBAN (Basic Bank Account Number), the Identifier must be either 15 or 16 digits:</li>
+                    <ol class="level3">
+                        <li>2 digits — Interchange number (Bank Number)</li>
+                        <li>4 digits — Branch number</li>
+                        <li>7 digits — Account number, right aligned, padded with high order zeros</li>
+                        <li>2 or 3 digits — Suffix, right aligned, padded with high order zeros</li>
+                    </ol>
+                </ol>
+            </ol>
+        </div>
+        <div>Where Scheme Name = AIIN (Debit Card or Credit Card), the Identifier must be 16 digits:</div>
+        <ol class="level3">
+            <li>6 digits — Issuer Identification Number (IIN) or Bank Identification Number (BIN)</li>
+            <li>9 digits — Account identifier / number</li>
+            <li>1 digit — Checksum</li>
+        </ol>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="4.3">SCP Customer notifications</div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="4.4">SCP remittance information</div>
+            <ol class="level1">
+                <li>remittance information is specified—</li>
+                <ol class="level2">
+                    <li>single structured remittance element must be used (&lt;RmtInf/Strd&gt;); and</li>
+                    <li>additional remittance information elements (&lt;RmtInf / Strd / AddtlRmtInf&gt;) must be included to represent particulars, code, and reference information (&apos;PCR&apos;) as follows:</li>
+                    <ol class="level3">
+                        <li>1: particulars:</li>
+                        <li>2: code:</li>
+                        <li>3: reference; and</li>
+                    </ol>
+                    <li>value provided within each additional remittance information element can be longer than 12 characters, although in each occurrence only the first 12 characters would be used by the creditor agent to provide HVCS payment information in statements; and</li>
+                    <li>value “NOTPROVIDED” must be used within additional remittance information elements as a proxy for 1 or 2 blank PCR values. However if there is no PCR information, the complete remittance information element must not be present.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="4.5">PCR examples</div>
+            <ol class="level1">
+                <li>The following examples demonstrate how particulars, code, and reference information can be encoded within an SCP:</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="5.1">How to represent direct and cover payments</div>
+            <ol class="level1">
+                <li>Several scenarios have been identified where domestic direct and cover MT messages have been used to send payments to beneficiary accounts to ensure they are not identified as SCPs, and hence do not trigger SCP obligations such as account number formatting or timing.</li>
+                <li>This section discusses how these payments should be represented in an MX message.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="1.">Late payments made after 16:45 cut-off</div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="2.">Avoid account number formatting restrictions (e.g. NZD payment to a foreign currency account of a domestic creditor)</div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="3.">Send NZD to a domestic FI who is neither a participant nor AVP MX CUG member</div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="4.">Send NZD to a foreign FI holding a Vostro account with another participant</div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="6.1">Overview</div>
+            <ol class="level1">
+                <li>The pacs.004 return message is sent by an agent to the previous agent in the payment chain to return a payment previously settled.</li>
+                <li>Payment returns may be the consequence of a payment cancellation requested by the instructing agent of the original payment message (solicited) or initiated by the original instructed agent as an unsolicited payment return.</li>
+                <li>The pacs.004 return message structure is equivalent to the MT 103/103+ (customer credit transfer message) REJT/RETN and the MT202/202 COV (financial institution credit transfer message) REJT/RETN. A REJT/ RETN message is functionally like an unsolicited / solicited pacs.004, respectively.</li>
+                <li>When using the pacs.004 return message, it is important to note the following:</li>
+                <ol class="level2">
+                    <li>Each pacs.004 return message must contain one HVCS return payment.</li>
+                    <li>HVCS supports partial solicited payment returns with the use of multiple pacs.004 return messages to return an HVCS payment in instalments.</li>
+                    <li>Unsolicited payment returns should be returned in a single return payment instruction.</li>
+                    <li>The returned Interbank Settlement Amount could be different from the original Interbank Settlement Amount for cross border payments due to currency exchange or charge fees. Participants must be able to receive a returned Interbank Settlement Amount that is different from the original Interbank Settlement Amount. The instructed agent that sends the pacs.004 return message cannot deduct a fee from the amount of an HVCS payment before returning it.</li>
+                    <li>The pacs.004 return message must be used to return an HVCS payment regardless of whether the return chain is the same as the original forward path or if it follows a different path.</li>
+                    <li>Participants cannot use the pacs.004 return message to return a return HVCS payment. If returning an HVCS payment received in a pacs.004 return message, the original payment type, as referenced in the pacs.004 return message, should be used.</li>
+                    <li>The pacs.004 return message does not cater for the Instruction for Next Agent element, so it is not possible to apply the ESAS conditional release options to a pacs.004 return message.</li>
+                    <li>Original parties of the underlying pacs.008, pacs.009, pacs.009 COV payment are reversed in the pacs.004 return message relative to the original payment. ie. the debtor of original payment becomes the creditor in the pacs.004 return message and the creditor of the original payment becomes the debtor in the pacs.004 return message.</li>
+                    <ol class="level3">
+                        <li>A participant acting as an Intermediary agent, and on-return cross border payment may find new ISO 20022 return reason codes, which are not parts of HVCS reason codes.</li>
+                    </ol>
+                </ol>
+                <li>The pacs.004 return message is passed from one participant to another participant serially, as shown in the diagram below.</li>
+                <li>The pacs.004 return message uses a number of elements to capture details from the underlying payment it is returning, which are nested within the Original Group Information and Transaction Information elements. The pacs.004 return message relates to the original payment instruction through references / identifiers in conjunction with attributes from the original payment instruction. A number of these elements are mandatory within the HVCS to ensure the pacs.004 return message conveys sufficient details to the instructed agent.</li>
+                <li>When returning a payment by the cover method, the pacs.004 return message follows the path of the pacs.009 COV payment message as shown below:</li>
+                <li>Again, the pacs.004 return message is sent serially between banks, this time referencing the pacs.009 COV payment message within the Original Group Information and Transaction Information elements of the pacs.004 return message. The information of the underlying pacs.008 payment message for which cover is provided must be captured in the Underlying Customer Credit Transfer elements.</li>
+                <li>When acting as intermediary, upon receipt of a pacs.004 return message, that requires on-sending, the same path is to be taken regardless of whether the return originated domestically or cross-border.</li>
+                <li>In some scenarios, for example if the intermediary bank was not involved in the original forward path, the intermediary may not have access to the original message details and must seek them in order to correctly populate the domestic pacs.004 return message.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="7.1">Overview</div>
+            <ol class="level1">
+                <li>Exception and investigation messages are designed to support case management functions related to payment instructions.</li>
+                <li>The camt.056 (FI to FI Payment Cancellation Request) message is used to request the return of an HVCS payment, for example, in the case of a mistaken payment (debtor error).</li>
+                <li>The camt.056 message must be used only to request the return of HVCS payments and the instructing agent of the original HVCS payment must include their investigation case identifier within the “Case/Identification” element within the camt.056 message.</li>
+                <li>The camt.029 (Resolution of Investigation) message is used to either accept, reject, or provide a pending status for a camt.056 message.</li>
+                <li>Exception and investigation messages must be sent within the AVP MX CUG.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="7.2">Element guidance</div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="7.3">Reason Codes and Use of Narrative</div>
+            <ol class="level1"></ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.1">Overview</div>
+            <ol class="level1">
+                <li>The HVCS Y-Copy message set includes the following SWIFTNet MX system messages:</li>
+                <ol class="level2">
+                    <li>xcop.001 Y-Copy Payment Partial Copy Notification</li>
+                    <li>xsys.001 Y-Copy Authorisation or Refusal</li>
+                    <li>xsys.002 Y-Copy Authorisation Notification</li>
+                    <li>xsys.003 Y-Copy Refusal Notification</li>
+                    <li>xsys.010 Non-Delivery Warning</li>
+                    <li>xsys.011 Delivery Notification</li>
+                </ol>
+                <li>All system messages are exchanged outside of the AVP MX CUG</li>
+                <li>The schemas for the xcop.001 and xsys.xxx system messages, together with some sample HVCS Y-Copy messages, can be found on MyStandards.</li>
+                <li>The base xsys.xxx system messages together with samples are published in the SWIFTNet 7.6 System Messages guide.</li>
+                <li>As illustrated in the diagram above:</li>
+                <ol class="level2">
+                    <li>The HVCS operates on the SWIFTNet Copy Service in a mandatory partial Y-Copy mode for the following message types; pacs.008, pacs.009 (CORE/COV) and pacs.004.</li>
+                    <li>In Y-Copy mode, SWIFT intercepts the pacs.008, pacs.009 (CORE/COV) and pacs.004 messages (flow 1) and copies prescribed fields from these payment messages to the destination, RBNZ (flow 2), using the xcop.001 message. More information is available on the Reserve Bank&apos;s Confluence website, here.</li>
+                    <li>SWIFT holds the payment message in a temporary queue until the RBNZ sends the appropriate authorisation or rejection (flow 3) using the xsys.001 message.</li>
+                    <li>If the RBNZ authorises the payment message, SWIFT releases and forwards the pacs.008 / pacs.009 (CORE/COV) / pacs.004 message for delivery to the instructed agent. SWIFT notifies settlement to the sender using the xsys.002 message (flow 4) and for the instructed agent, includes the settlement information in the SWIFTNet Header of the payment message (flow 4) using the third-party to receiver element.</li>
+                    <li>As part of the normal InterAct features, the sender can request that SWIFT monitors the delivery of sent messages (flow 5). In this case, SWIFT returns an xsys.010 Non-Delivery Warning or an xsys.011 Delivery Notification, or both, to the sender, as appropriate. These notifications are based on the delivery of the original message to its receiver, and not on the delivery of the copy to the RBNZ.</li>
+                </ol>
+                <li>Further information is provided in the SWIFTNet Service Description, SWIFTNet Messaging Operations Guide, SWIFTNet System Messages, and SWIFTNet Vendor Interface Specifications available on the SWIFT website.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.2">Message validation (SWIFT)</div>
+            <ol class="level1">
+                <li>The RBNZ has chosen to implement Base Message Validation within the AVP MX CUG. This means SWIFT will validate messages conform to the ISO 20022 base standards only (that is, not the MX Message Specifications); including whether the XML tree is well formed and that the HVCS instruction complies with the base ISO 20022 message format.</li>
+                <li>The XML validations SWIFT performs ensure that the business document contains valid XML coding, for example:</li>
+                <ol class="level2">
+                    <li>Each XML document must be a single-rooted hierarchical structure of elements;</li>
+                    <li>All elements must be correctly paired;</li>
+                    <li>The element opening tag and closing tag are the same name; and</li>
+                    <li>Element names must start with an alphabetic character; subsequent characters may be alphanumeric.</li>
+                </ol>
+                <li>Message Definition Reports and Schemas documents for base ISO 20022 messages are listed in SWIFT&apos;s Knowledge Centre and contain detailed specifications and associated error codes.</li>
+                <li>Any messages that fail validation will not be delivered.</li>
+                <li>The restrictions defined for HVCS instructions as specified within the MX Message Specifications are not validated centrally by SWIFT due to RBNZ&apos;s decision to implement Base Message Validation.  It is for this reason that participants are requested to install SWIFT Usage Guideline Validation packages within their SAA or AMH environments to ensure messages conform to these MX Messaging Procedures prior to sending.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.3">Message validation (Participant)</div>
+            <ol class="level1">
+                <li>Usage Guideline validation is designed to complement the validations provided by SWIFT described in the previous section that are applicable specifically to HVCS instructions in accordance with the MX Message Specifications.</li>
+                <li>For the purposes of validation, the rules within Usage Guidelines generally falls into two categories:</li>
+                <ol class="level2">
+                    <li>Formal Rules or &apos;hard&apos; rules — which include the Schema, Cross-Element and Reference Data Rules. These can be articulated in the form of machine-readable algorithms and can be easily validated; and</li>
+                    <li>Textual Rules — which include Textual Rules and Guidelines which are not able to be validated in a deterministic way.</li>
+                </ol>
+                <li>Usage Guideline validation covers the Formal Rules contained within the MX Message Specifications, however any textual rules specified for HVCS instructions are not validated systemically.  Participants should be aware of these rules and apply them manually prior to sending.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.4">Conditional release</div>
+            <ol class="level1">
+                <li>Conditional release is where the payment message will only be released upon certain criteria being met.</li>
+                <li>ESAS will maintain the conditional release functionality with ISO 20022 for the pacs.008 and pacs.009 payment messages. Conditional release for the pacs.004 is not supported.</li>
+                <li>The element “Instruction for Next Agent / Instruction Information” elements are used to specify any conditional release parameters for the HVCS payment.</li>
+                <li>The following release conditions are supported:</li>
+                <ol class="level2">
+                    <li>Release the HVCS payment for settlement at a specified date and time.</li>
+                    <li>Release the HVCS payment for settlement at a specified event in the RTGS.</li>
+                    <li>Release the HVCS payment for settlement once authorised in the ESAS GUI.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.5">Core data copied to ESAS — pacs.008 and pacs.009</div>
+            <ol class="level1">
+                <li>The table below lists the elements that will be copied from the Document sections of the pacs.008 and pacs.009 payment messages to the xsys.001.</li>
+                <li>All elements from the Business Application Header (BAH) will be copied to ESAS including sender BIC, receiver BIC, business message identifier, message definition identifier, and creation date.</li>
+                <li>The details of each element and the notes associated with them are documented in the MX Message Specifications found in MyStandards.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.6">Core data copied to ESAS — pacs.004</div>
+            <ol class="level1">
+                <li>All elements from the Business Application Header (BAH) will be copied to ESAS including sender BIC, receiver BIC, business message identifier, message definition identifier, and creation date.</li>
+                <li>The following table list the elements that will be copied from the Document sections of pacs.004 return messages.</li>
+                <li>The details of each element and the notes associated with them are documented in the MX Message Specifications found in MyStandards.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.7">Third party information</div>
+            <ol class="level1">
+                <li>As part of the SWIFT Partial Copy service, ESAS is required to either authorise or reject the payment message (pacs.008/pacs.009 CORE/pacs.009 COV/pacs.004) using an xsys.001 system message. In the xsys.001 system message ESAS provides additional information related to the payment message and how it was processed using third party elements.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.8">Settlement is successful</div>
+            <ol class="level1">
+                <li>If settlement is successful in ESAS:</li>
+                <ol class="level2">
+                    <li>The elements &lt;ThirdPartyToSenderInformation&gt; and &lt;ThirdPartyToReceiverInformation&gt; are used to supply ESAS settlement information to the sender and receiver of the payment message.</li>
+                    <li>The element &lt;ThirdPartyToSenderInformation&gt; and its child elements are appended from the xsys.001 into the xsys.002 sent to the sender of the payment message, and the element &lt;ThirdPartyToReceiverInformation&gt; and its child elements are appended to the payment message delivered to the receiver.</li>
+                </ol>
+                <li>The RBNZ will supply the following elements and data within the third-party elements on successful settlement:</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.9">Settlement is unsuccessful</div>
+            <ol class="level1">
+                <li>If settlement is not successful in ESAS:</li>
+                <ol class="level2">
+                    <li>The element &lt;ThirdPartyRefusalReason&gt; is used to supply information related to why the payment was rejected in ESAS, which is sent to the sender of the payment message.</li>
+                    <li>The element &lt;ThirdPartyRefusalReason&gt; and its child elements are appended from the xsys.001 into the xsys.003 sent to the sender of the payment message. In this scenario, because the payment was rejected, no messages are released to the receiver.</li>
+                </ol>
+                <li>The RBNZ will supply the following elements and data within the third party elements on rejection:</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.10">Overview</div>
+            <ol class="level1">
+                <li>The Y-Copy Authorisation Notification is generated by SWIFTNet to notify the sender that a pacs.008 / pacs.009 (CORE/COV) / pacs.004 message has been authorised by RTGS - an xsys.001 with AuthstnSts equal to &apos;Authorised&apos;.</li>
+                <li>Payment release information is conveyed to the sender in the ThirdPartyToSenderInformation element of the xsys.002 message.</li>
+                <li>The HVCS Y-Copy will generate either an Authorisation Notification (xsys.002) or Refusal Notification (xsys.003) system message in response to each pacs.008, pacs.009 (CORE/COV) or pacs.004 payment message sent for clearing, so the will always receive a system message confirming clearing status of each payment message.</li>
+                <li>There are two options for linking an xsys.002 authorisation notification back to the original pacs.008, pacs.009 or pacs.004 payment message:</li>
+                <ol class="level2">
+                    <li>one using a SWIFT generated reference (this is the recommended option); and</li>
+                    <li>the other using user input reference. More information on either option can be found on the RBNZ&apos;s Confluence Website.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.11">Overview</div>
+            <ol class="level1">
+                <li>The Y-Copy Refusal Notification is a system message generated by SWIFTNet to alert the sender that a pacs.008 / pacs.009 (CORE/COV) / pacs.004 return message has been refused by RTGS - an xsys.001 with AuthstnSts equal to &apos;Refused&apos;.</li>
+                <li>This xsys.003 system message contains the ThirdPartyRefusalReason, which provides further information about the refusal (see Third Party Refusal Reason Codes below).</li>
+                <li>There are two options for linking an xsys.003 refusal notification back to the pacs.008, pacs.009 or pacs.004 payment message:</li>
+                <ol class="level2">
+                    <li>one using a SWIFT generated reference (this is the recommended option); and</li>
+                    <li>the other using user input reference. More information on either option can be found on the RBNZ&apos;s Confluence Website.</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.12">Overview</div>
+            <ol class="level1">
+                <li>The SWIFTNet Y-Copy service generates the Non-Delivery Warning (xsys.010) system message when a message is considered to be overdue (not delivered within the time frame specified by the sender).</li>
+                <li>The xsys.010 system message directly corresponds to the MT010 system message and is optional.</li>
+                <li>The sender of an HVCS instruction can select the Non-Delivery Warning feature indicating in the SWIFTNet Header the period of time after which they require notification if the HVCS instruction has not been delivered. SWIFT tries to deliver the HVCS instruction as normal, and if successful does not notify the sender.</li>
+                <li>Participants should refer to the SWIFTNet system message specification for the additional xsys.010 fields and example of the XML structure.</li>
+                <li>Status codes:</li>
+                <ol class="level2">
+                    <li>PendingAuthorisation (The message is not yet authorised by the RBNZ).</li>
+                    <li>AuthorisedPendingDelivery (The message is authorised by RBNZ, but not yet delivered).</li>
+                </ol>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.13">Overview</div>
+            <ol class="level1">
+                <li>The Delivery Notification message is an optional system message that indicates that a message for which a delivery notification is requested, has been successfully delivered.</li>
+                <li>The Delivery Notification is reconciled with the InterAct request to which it applies.</li>
+                <li>The xsys.011 system message directly corresponds to the MT011 system message and is optional.</li>
+                <li>The sender of an HVCS instruction may explicitly request the Delivery Notification. SWIFTNet generates a Delivery Notification when it receives the technical delivery acknowledgement from the receiver&apos;s interface.</li>
+                <li>Participants should refer to the SWIFTNet system message specification for the additional xsys.011 fields and example of the XML structure.</li>
+                <li>The xsys.010 and xsys.011 system messages are based on the delivery of the message to its receiver, and not on the delivery of a copy to the copy destination.</li>
+            </ol>
+        </div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="8.14">Overview</div>
+            <ol class="level1"></ol>
+        </div>
+    </body>
+</html>

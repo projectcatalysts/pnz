@@ -16,6 +16,55 @@
             <div class="document-meta">Version 1</div>
             <div class="document-meta">Effective date: 20/11/2022</div>
         </div>
+        <h1 class="section-heading">Document purpose and overview</h1>
+        <div class="tag-commentary"></div>
+        <div class="clause-row">
+            <div class="clause-heading" data-number="">HVCS rules and procedures overview</div>
+            <ol class="level1">
+                <div>
+                    <p>This document HVCS Common Procedures (Part B) is one part of a suite of documentation to help
+			participants understand what is required to become a high value clearing system (HVCS) participant
+			and how to send and receive individual HVCS instructions and NZD HVCS payments that the participant
+			cannot revoke or reverse after settlement.</p>
+                </div>
+            </ol>
+        </div>
+        <div>
+            <div class="menu-container">
+                <div class="menu-root">
+                    <p>Payments NZ Rules</p>
+                    <p>Part 9</p>
+                    <p>HVCS Clearing and Settlement</p>
+                </div>
+                <div class="menu-branches">
+                    <a href="overview.html" class="menu-branch">
+                        <p>Part A</p>
+                        <p>HVCS Overview</p>
+                    </a>
+                    <a href="common.html" class="menu-branch active">
+                        <p>Part B</p>
+                        <p>HVCS Common Procedures</p>
+                    </a>
+                    <a href="scp.html" class="menu-branch">
+                        <p>Part C</p>
+                        <p>SCP Procedures</p>
+                    </a>
+                    <a href="mx.html" class="menu-branch">
+                        <p>Part D</p>
+                        <p>MX Messaging Procedures (ISO 20022)</p>
+                    </a>
+                    <a href="mt.html" class="menu-branch">
+                        <p>Part E</p>
+                        <p>MT Messaging Procedures (ISO 15022)</p>
+                    </a>
+                    <a href="coexistence.html" class="menu-branch">
+                        <p>Part F</p>
+                        <p>Co-existence Procedures</p>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-caption">Diagram 01: HVCS Rules and Procedures documentation structure</div>
+        </div>
         <div class="clause-row">
             <div class="clause-heading" data-number="1.1">Defined terms</div>
             <ol class="level1"></ol>
@@ -27,27 +76,27 @@
         <div class="clause-row">
             <div class="clause-heading" data-number="1.3">Agency arrangement obligations</div>
             <ol class="level1">
-                <li>L1 - A participant that receives HVCS instructions on behalf of a creditor agent pursuant to an agency arrangement must ensure that each creditor agent which it has an agency arrangement with has a SWIFT BIC to identify the creditor agent that can be provided to the debtor for inclusion in the details of the debtor&apos;s payment instruction.</li>
-                <li>L1 - A participant that sends HVCS instructions on behalf of a debtor agent pursuant to an agency arrangement must ensure that each debtor agent which it has an agency arrangement with has a SWIFT BIC that can be used by the Participant acting as an instructing agent to identify the debtor agent within the payment message.</li>
+                <li>A participant that receives HVCS instructions on behalf of a creditor agent pursuant to an agency arrangement must ensure that each creditor agent which it has an agency arrangement with has a SWIFT BIC to identify the creditor agent that can be provided to the debtor for inclusion in the details of the debtor&apos;s payment instruction.</li>
+                <li>A participant that sends HVCS instructions on behalf of a debtor agent pursuant to an agency arrangement must ensure that each debtor agent which it has an agency arrangement with has a SWIFT BIC that can be used by the Participant acting as an instructing agent to identify the debtor agent within the payment message.</li>
             </ol>
         </div>
         <div class="clause-row">
             <div class="clause-heading" data-number="1.4">HVCS operating times</div>
             <ol class="level1">
-                <li>L1 - An HVCS participant must connect to the transaction delivery system—</li>
+                <li>An HVCS participant must connect to the transaction delivery system—</li>
                 <ol class="level2">
-                    <li>L2 - every business day including every provincial holiday; and</li>
-                    <li>L2 - during the minimum time period commencing at 09:00 on a business day and ending at 17:15 on that business day; and</li>
-                    <li>L2 - during a time period from 17:15 on a business day until such time as is necessary to receive any HVCS instruction sent in accordance with clause 3.3 or 3.4 of these HVCS Common Procedures.</li>
+                    <li>every business day including every provincial holiday; and</li>
+                    <li>during the minimum time period commencing at 09:00 on a business day and ending at 17:15 on that business day; and</li>
+                    <li>during a time period from 17:15 on a business day until such time as is necessary to receive any HVCS instruction sent in accordance with clause 3.3 or 3.4 of these HVCS Common Procedures.</li>
                 </ol>
-                <li>L1 - The instructing agent may only send an HVCS instruction during the time period commencing at 09:00 on a business day and ending at 16:45 on that business day unless clause 3.3 or 3.4 of these HVCS Common Procedures apply.</li>
+                <li>The instructing agent may only send an HVCS instruction during the time period commencing at 09:00 on a business day and ending at 16:45 on that business day unless clause 3.3 or 3.4 of these HVCS Common Procedures apply.</li>
             </ol>
         </div>
         <div class="clause-row">
             <div class="clause-heading" data-number="1.5">Validating HVCS payments</div>
             <ol class="level1">
-                <li>L1 - The following table sets out the validation requirements that apply to a range of HVCS instructions.</li>
-                <li>L1 - For clarity, the obligations set out in the table below are cumulative.  Participants must comply with every validation obligation that applies to the type of HVCS instruction that the participant sends or receives.</li>
+                <li>The following table sets out the validation requirements that apply to a range of HVCS instructions.</li>
+                <li>For clarity, the obligations set out in the table below are cumulative.  Participants must comply with every validation obligation that applies to the type of HVCS instruction that the participant sends or receives.</li>
             </ol>
         </div>
         <div class="clause-row">
@@ -57,10 +106,10 @@
         <div class="clause-row">
             <div class="clause-heading" data-number="1.7">Return HVCS payment: timing, format and content</div>
             <ol class="level1">
-                <li>L1 - To comply with rule 9.21 and clause 2.2 of these HVCS Common Procedures , an instructed agent must return an HVCS payment:</li>
+                <li>To comply with rule 9.21 and clause 2.2 of these HVCS Common Procedures , an instructed agent must return an HVCS payment:</li>
                 <ol class="level2">
-                    <li>L2 - as soon as practicable after making the decision to return it, and</li>
-                    <li>L2 - in accordance with Part F - Co-existence Procedures and the applicable message standards.</li>
+                    <li>as soon as practicable after making the decision to return it, and</li>
+                    <li>in accordance with Part F - Co-existence Procedures and the applicable message standards.</li>
                 </ol>
             </ol>
         </div>
@@ -71,47 +120,47 @@
         <div class="clause-row">
             <div class="clause-heading" data-number="2.2">Error prevents processing</div>
             <ol class="level1">
-                <li>L1 - This clause applies to an instructed agent who has received a settled HVCS payment but cannot process the HVCS payment because of an error relating to the HVCS payment.</li>
-                <li>L1 - The instructed agent must do one of the following:</li>
+                <li>This clause applies to an instructed agent who has received a settled HVCS payment but cannot process the HVCS payment because of an error relating to the HVCS payment.</li>
+                <li>The instructed agent must do one of the following:</li>
                 <ol class="level2">
-                    <li>L2 - return the HVCS payment to the instructing agent in accordance with the applicable HVCS standards:</li>
-                    <li>L2 - require the instructing agent to send data to amend the HVCS payment:</li>
-                    <li>L2 - amend the HVCS payment without asking the instructing agent for amended data and, as soon as practicable after amendment is complete, process the HVCS payment.</li>
+                    <li>return the HVCS payment to the instructing agent in accordance with the applicable HVCS standards:</li>
+                    <li>require the instructing agent to send data to amend the HVCS payment:</li>
+                    <li>amend the HVCS payment without asking the instructing agent for amended data and, as soon as practicable after amendment is complete, process the HVCS payment.</li>
                 </ol>
-                <li>L1 - For a cross border redirection (as described in clause 9.1(2)(a)(iii) of the Rules), the instructed agent must not deduct any fees from the amount of the HVCS payment before returning it.</li>
-                <li>L1 - If an instructing agent of an HVCS payment receives a request from an instructed agent under subclause (2)(b), the instructing agent must, as soon as practicable after receiving the request, send data to amend the HVCS payment to the instructed agent.</li>
-                <li>L1 - If the instructed agent receives amended data from an instructing agent under subclause (4), the instructing agent must, as soon as practicable after receiving the data, use the data to amend the HVCS payment.</li>
+                <li>For a cross border redirection (as described in clause 9.1(2)(a)(iii) of the Rules), the instructed agent must not deduct any fees from the amount of the HVCS payment before returning it.</li>
+                <li>If an instructing agent of an HVCS payment receives a request from an instructed agent under subclause (2)(b), the instructing agent must, as soon as practicable after receiving the request, send data to amend the HVCS payment to the instructed agent.</li>
+                <li>If the instructed agent receives amended data from an instructing agent under subclause (4), the instructing agent must, as soon as practicable after receiving the data, use the data to amend the HVCS payment.</li>
             </ol>
         </div>
         <div class="clause-row">
             <div class="clause-heading" data-number="2.3">Instructed agent credits wrong account</div>
             <ol class="level1">
-                <li>L1 - If the instructed agent of an HVCS payment credits the wrong account number with the amount of the HVCS payment and the instructing agent incurs loss as a direct result of the error, the instructed agent must pay the instructing agent the amount of the loss up to the value of the HVCS payment if one of the following applies:</li>
+                <li>If the instructed agent of an HVCS payment credits the wrong account number with the amount of the HVCS payment and the instructing agent incurs loss as a direct result of the error, the instructed agent must pay the instructing agent the amount of the loss up to the value of the HVCS payment if one of the following applies:</li>
                 <ol class="level2">
-                    <li>L2 - the payment message specified the correct account number:</li>
-                    <li>L2 - the instructing agent sent data to the instructed agent to amend the payment message in accordance with clause 2.2 of these HVCS Common Procedures and the data specified the correct account number:</li>
-                    <li>L2 - the instructed agent—</li>
+                    <li>the payment message specified the correct account number:</li>
+                    <li>the instructing agent sent data to the instructed agent to amend the payment message in accordance with clause 2.2 of these HVCS Common Procedures and the data specified the correct account number:</li>
+                    <li>the instructed agent—</li>
                     <ol class="level3">
-                        <li>L3 - could not process the HVCS instruction because of an error relating to the HVCS instruction; and</li>
-                        <li>L3 - did not obtain data from the instructing agent to amend the payment message under clause 2.2 of these HVCS Common Procedures; and</li>
-                        <li>L3 - amended the HVCS payment with the wrong account number.</li>
+                        <li>could not process the HVCS instruction because of an error relating to the HVCS instruction; and</li>
+                        <li>did not obtain data from the instructing agent to amend the payment message under clause 2.2 of these HVCS Common Procedures; and</li>
+                        <li>amended the HVCS payment with the wrong account number.</li>
                     </ol>
                 </ol>
-                <li>L1 - If the instructed agent of an HVCS payment credits the wrong account number with the amount of the HVCS payment because the instructing agent specified the wrong account number in the payment message the instructing agent must, as soon as practicable after it becomes aware that the wrong account number has been credited—</li>
+                <li>If the instructed agent of an HVCS payment credits the wrong account number with the amount of the HVCS payment because the instructing agent specified the wrong account number in the payment message the instructing agent must, as soon as practicable after it becomes aware that the wrong account number has been credited—</li>
                 <ol class="level2">
-                    <li>L2 - send the payment message to the instructed agent again; and</li>
-                    <li>L2 - ensure that the payment message contains the correct account number.</li>
+                    <li>send the payment message to the instructed agent again; and</li>
+                    <li>ensure that the payment message contains the correct account number.</li>
                 </ol>
             </ol>
         </div>
         <div class="clause-row">
             <div class="clause-heading" data-number="2.4">Co-operate to resolve processing errors</div>
             <ol class="level1">
-                <li>L1 - Participants should co-operate to resolve a problem caused by a processing error affecting a HVCS instruction.</li>
-                <li>L1 - For example, if an instructed agent credits the amount of a HVCS payment to the wrong creditor&apos;s account number—</li>
+                <li>Participants should co-operate to resolve a problem caused by a processing error affecting a HVCS instruction.</li>
+                <li>For example, if an instructed agent credits the amount of a HVCS payment to the wrong creditor&apos;s account number—</li>
                 <ol class="level2">
-                    <li>L2 - the instructing agent may ask the instructed agent to freeze funds in the creditor&apos;s account until the problem is resolved; and</li>
-                    <li>L2 - the instructed agent should determine whether to comply with the request, including by having regard to whether the instructed agent has the legal right to do so.</li>
+                    <li>the instructing agent may ask the instructed agent to freeze funds in the creditor&apos;s account until the problem is resolved; and</li>
+                    <li>the instructed agent should determine whether to comply with the request, including by having regard to whether the instructed agent has the legal right to do so.</li>
                 </ol>
             </ol>
         </div>
@@ -126,51 +175,51 @@
         <div class="clause-row">
             <div class="clause-heading" data-number="3.2">When HVCS payments settle</div>
             <ol class="level1">
-                <li>L1 - The effect of rule 9.14 is that if the instructing agent settles an HVCS payment after 17:15, unless the late HVCS instruction requirements apply, the instructed agent:</li>
+                <li>The effect of rule 9.14 is that if the instructing agent settles an HVCS payment after 17:15, unless the late HVCS instruction requirements apply, the instructed agent:</li>
                 <ol class="level2">
-                    <li>L2 - is not required to process the HVCS instruction that business day, but</li>
-                    <li>L2 - may decide to process the HVCS instruction that business day to meet the requirements or the expectations of its customer.</li>
+                    <li>is not required to process the HVCS instruction that business day, but</li>
+                    <li>may decide to process the HVCS instruction that business day to meet the requirements or the expectations of its customer.</li>
                 </ol>
             </ol>
         </div>
         <div class="clause-row">
             <div class="clause-heading" data-number="3.3">Sending customer HVCS instructions after 16:45</div>
             <ol class="level1">
-                <li>L1 - This clause applies to a customer credit transfer message that is an SCP or a cross border payment redirection if—</li>
+                <li>This clause applies to a customer credit transfer message that is an SCP or a cross border payment redirection if—</li>
                 <ol class="level2">
-                    <li>L2 - a technical problem or an operational problem prevents the instructing agent from sending the customer credit transfer message by 16.45 on a business day; and</li>
-                    <li>L2 - the instructing agent requires the instructed agent to credit the creditor&apos;s account with the amount of an HVCS payment that business day.</li>
+                    <li>a technical problem or an operational problem prevents the instructing agent from sending the customer credit transfer message by 16.45 on a business day; and</li>
+                    <li>the instructing agent requires the instructed agent to credit the creditor’s account with the amount of an HVCS payment that business day.</li>
                 </ol>
-                <li>L1 - The instructing agent—</li>
+                <li>The instructing agent—</li>
                 <ol class="level2">
-                    <li>L2 - must obtain the instructed agent&apos;s explicit consent to the time by which the instructing agent must send a HVCS instruction to which this standard applies; and</li>
-                    <li>L2 - must use the contact people and method of communicating for the instructed agent specified in the industry incident contact list; and</li>
-                    <li>L2 - is entitled to obtain the consent in written form or verbal form.</li>
+                    <li>must obtain the instructed agent’s explicit consent to the time by which the instructing agent must send a HVCS instruction to which this standard applies; and</li>
+                    <li>must use the contact people and method of communicating for the instructed agent specified in the industry incident contact list; and</li>
+                    <li>is entitled to obtain the consent in written form or verbal form.</li>
                 </ol>
-                <li>L1 - The instructed agent is not required to consent to a request from an instructing agent to send a customer credit transfer message after 16:45. For example, the instructed agent may not be able to process the HVCS instruction at the time requested.</li>
-                <li>L1 - If the instructing agent obtains the instructed agent&apos;s consent to a time for sending the HVCS instruction and the instructing agent sends the HVCS instruction by the agreed time, the timeframe in clause 1.4 of these HVCS Common Procedures does not apply to the HVCS instruction.</li>
+                <li>The instructed agent is not required to consent to a request from an instructing agent to send a customer credit transfer message after 16:45. For example, the instructed agent may not be able to process the HVCS instruction at the time requested.</li>
+                <li>If the instructing agent obtains the instructed agent’s consent to a time for sending the HVCS instruction and the instructing agent sends the HVCS instruction by the agreed time, the timeframe in clause 1.4 of these HVCS Common Procedures does not apply to the HVCS instruction.</li>
             </ol>
         </div>
         <div class="clause-row">
             <div class="clause-heading" data-number="3.4">Sending FI HVCS instructions after 16:45</div>
             <ol class="level1">
-                <li>L1 - This clause applies to a participant who proposes to send and receive FI credit transfer messages during the CLS evening session either—</li>
+                <li>This clause applies to a participant who proposes to send and receive FI credit transfer messages during the CLS evening session either—</li>
                 <ol class="level2">
-                    <li>L2 - as the creditor or the debtor; or</li>
-                    <li>L2 - on behalf of a FI customer.</li>
+                    <li>as the creditor or the debtor; or</li>
+                    <li>on behalf of a FI customer.</li>
                 </ol>
-                <li>L1 - The participant may only send and receive FI credit transfer messages during the CLS evening session on a business day if—</li>
+                <li>The participant may only send and receive FI credit transfer messages during the CLS evening session on a business day if—</li>
                 <ol class="level2">
-                    <li>L2 - no less than 1 month before that business day,—</li>
+                    <li>no less than 1 month before that business day,—</li>
                     <ol class="level3">
-                        <li>L3 - the participant has notified the chief executive of Payments NZ that on and from a specified date the participant proposes to send and receive FI credit transfer messages during the CLS evening session; and</li>
-                        <li>L3 - the chief executive has notified every other participant that on and from the specified date the participant proposes to send and receive FI credit transfer messages during the CLS evening session; and</li>
+                        <li>the participant has notified the chief executive of Payments NZ that on and from a specified date the participant proposes to send and receive FI credit transfer messages during the CLS evening session; and</li>
+                        <li>the chief executive has notified every other participant that on and from the specified date the participant proposes to send and receive FI credit transfer messages during the CLS evening session; and</li>
                     </ol>
-                    <li>L2 - the participant has, on and from the date specified in the chief executive&apos;s notification, participated in every CLS evening session; and</li>
-                    <li>L2 - the participant participates in the CLS evening session that business day during the time period commencing at 16:45 on the business day and ending 30 minutes after the final CLS pay out.</li>
+                    <li>the participant has, on and from the date specified in the chief executive’s notification, participated in every CLS evening session; and</li>
+                    <li>the participant participates in the CLS evening session that business day during the time period commencing at 16:45 on the business day and ending 30 minutes after the final CLS pay out.</li>
                 </ol>
-                <li>L1 - If the participant sends an FI credit transfer message during the CLS evening session in accordance with subclause (2), the timeframe in clause 1.4 of these HVCS Common Procedures do not apply to the FI credit transfer messages.</li>
-                <li>L1 - If a participant proposes to cease sending and receiving FI credit transfer messages during the CLS evening session, no less than 1 month before the business day that the participant proposes to cease sending and receiving the FI credit transfer messages, the participant must notify Payments NZ that it proposes to cease.</li>
+                <li>If the participant sends an FI credit transfer message during the CLS evening session in accordance with subclause (2), the timeframe in clause 1.4 of these HVCS Common Procedures do not apply to the FI credit transfer messages.</li>
+                <li>If a participant proposes to cease sending and receiving FI credit transfer messages during the CLS evening session, no less than 1 month before the business day that the participant proposes to cease sending and receiving the FI credit transfer messages, the participant must notify Payments NZ that it proposes to cease.</li>
             </ol>
         </div>
         <div class="clause-row">
