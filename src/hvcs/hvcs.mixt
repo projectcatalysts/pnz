@@ -1,0 +1,86 @@
+namespace hvcs
+
+import [
+	"../html.mixt"
+]
+{
+	menuClass = (currentIndex as UInt64.Type, activeIndex as UInt64.Type) => (
+		if currentIndex == activeIndex then
+			"menu-branch active"
+		else
+			"menu-branch"
+	)
+	hvcs::menu = (activeIndex as UInt64.Type) => [
+		div = html::class(
+			"menu-container"
+			[
+				div = html::class(
+					"menu-root"
+					[
+						"Payments NZ Rules"
+						"Part 9"
+						"HVCS Clearing and Settlement"
+					]
+				)
+
+				div = html::class(
+					"menu-branches"
+					[
+						a = html::styled_link(
+							"overview.html"
+							menuClass( 0, activeIndex )
+							[
+								"Part A"
+								"HVCS Overview"
+							]
+						)
+						a = html::styled_link(
+							"common.html"
+							menuClass( 1, activeIndex )
+							[
+								"Part B"
+								"HVCS Common Procedures"
+							]
+						)
+						a = html::styled_link(
+							"scp.html"
+							menuClass( 2, activeIndex )
+							[
+								"Part C"
+								"SCP Procedures"
+							]
+						)
+						a = html::styled_link(
+							"mx.html"
+							menuClass( 3, activeIndex )
+							[
+								"Part D"
+								"MX Messaging Procedures (ISO 20022)"
+							]
+						)
+						a = html::styled_link(
+							"mt.html"
+							menuClass( 4, activeIndex )
+							[
+								"Part E"
+								"MT Messaging Procedures (ISO 15022)"
+							]
+						)
+						a = html::styled_link(
+							"coexistence.html"
+							menuClass( 5, activeIndex )
+							[
+								"Part F"
+								"Co-existence Procedures"
+							]
+						)
+					]
+				)
+			]
+		)
+		div = html::class(
+			"menu-caption"
+			"Diagram 01: HVCS Rules and Procedures documentation structure"
+		)
+	]
+}

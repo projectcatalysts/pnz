@@ -322,3 +322,19 @@ h1 {
 .bullets strong {
   font-weight: bold;
 }
+
+@media (max-width: 600px) {
+  .clause-row {
+    grid-template-columns: 1fr;   /* switch to a single column */
+    gap: 0em;                     /* smaller vertical gap between header and content*/
+  }
+  
+  .clause-heading {
+    margin-right: 0;              /* remove right margin for full width */
+    margin-bottom: 0.5em;         /* add a bit of spacing under heading */
+  }
+
+  .clause-content {
+    width: 100%;
+  }  
+}

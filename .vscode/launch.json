@@ -34,5 +34,20 @@
 				"--pretty"
 			]
 		},	
+		{
+			"name": "Run Conversion",
+			"type": "mixt",
+			"request": "launch",
+			"mode": "run",
+			"program": "${workspaceFolder}/src/convert.mixt",
+			"mixtFlags": [
+				"--logNoPid",
+				"--logLevel",
+				"Info",
+				"--format",
+				"mixt",
+				"--pretty"
+			]
+		},
 	]
 }

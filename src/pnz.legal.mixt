@@ -9,20 +9,20 @@ import [
 
 {
 	// pnz.legal::document creates a PNZ legal document as HTML
-	pnz.legal::document = (content as list) => (
+	pnz.legal::document = (docTitle as text, docContent as list) => (
 		html::document(
 			"html",
 			"en",
 			[
 					;meta = html::meta( "UTF-8" )
-					title = "HVCS SCP"
+					title = docTitle
 					link = html::stylesheet( "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" )
 					link = html::stylesheet( "../styles/pnz.legal.css" )
 					link = html::stylesheet( "../styles/pnz.hvcs.menu.css" )
 			]		
 			html::class(
 				"document"
-				content
+				docContent
 			)
 		)
 	)

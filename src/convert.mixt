@@ -1,0 +1,308 @@
+let
+	inputFileName = "src/hvcs/14B_HVCS common procedures v1.txt"
+	outputFileName = "src/hvcs/converted.mixt"
+	file = File.Contents( inputFileName )
+	lines = Lines.FromBinary(
+		file
+		{
+			TreatCRAsNewLine = true
+		}
+	)
+
+	initialState = {
+		mode = "none"
+		prevMode = "none"
+		buffer = Text.Buffer()
+			|> Text.Append( `
+import [
+	pnz = "../pnz.legal.mixt"
+]
+
+[
+`)
+	}
+
+	// setState
+	setState = (state as record, desired as text) => (
+		let
+			logState = Diagnostics.Trace( TraceLevel.Information, "stateEntry", state )
+			// Variables start with underscore to avoid conflict with local field
+			_mode = logState{ mode }
+			_prevMode = logState{ prevMode }
+			_buffer = logState{ buffer }
+			changeLevel = (
+				// No change
+				if desired == _mode then
+					state /* & {
+						buffer = _buffer
+							|> Text.Append( "// NO CHANGE 1 - desired:" )
+							|> Text.Append( desired )
+							|> Text.Append( " - mode:" )
+							|> Text.Append( _mode )
+							|> Text.Append( " - previous:" )
+							|> Text.Append( _prevMode )
+							|> Text.Append( "\n" )
+					} */
+
+				// --- Switching to level3 ---
+				else if desired == "level3" then
+
+					if _mode == "level2" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t\t\tpnz::level3(\n")
+						}
+					else
+						state /* & {
+							buffer = _buffer
+								|> Text.Append( "// NO CHANGE 2 - desired:" )
+								|> Text.Append( desired )
+								|> Text.Append( " - mode:" )
+								|> Text.Append( _mode )
+								|> Text.Append( " - previous:" )
+								|> Text.Append( _prevMode )
+								|> Text.Append( "\n" )
+						} */
+
+				// --- Switching to level2 ---
+				else if desired == "level2" then
+
+					if _mode == "clause" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t\tpnz::level2(\n")
+						}
+					else if _mode == "level3" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t\t\t)\n")
+						}
+					else
+						state /* & {
+							buffer = _buffer
+								|> Text.Append( "// NO CHANGE 3 - desired:" )
+								|> Text.Append( desired )
+								|> Text.Append( " - mode:" )
+								|> Text.Append( _mode )
+								|> Text.Append( " - previous:" )
+								|> Text.Append( _prevMode )
+								|> Text.Append( "\n" )
+						} */
+
+				// --- Switching to clause ---
+				else if desired == "clause" then
+
+					if _mode == "clause" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t)\n")
+						}
+					else if _mode == "level2" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t\t)\n")
+						}
+					else if _mode == "level3" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t\t\t)\n")
+								|> Text.Append("\t\t)\n")
+						}
+					else
+						state /* & {
+							buffer = _buffer
+								|> Text.Append( "// NO CHANGE 4 - desired:" )
+								|> Text.Append( desired )
+								|> Text.Append( " - mode:" )
+								|> Text.Append( _mode )
+								|> Text.Append( " - previous:" )
+								|> Text.Append( _prevMode )
+								|> Text.Append( "\n" )
+						} */
+
+				// --- Switching to comment or none ---
+				else
+
+					if _mode == "level3" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t\t\t)\n")  // close level3
+								|> Text.Append("\t\t)\n")    // close level2
+								|> Text.Append("\t)\n")      // close clause
+						}
+					else if _mode == "level2" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t\t)\n")     // close level2
+								|> Text.Append("\t)\n")       // close clause
+						}
+					else if _mode == "clause" then
+						state & {
+							buffer = _buffer
+								|> Text.Append("\t)\n")       // close clause
+						}
+					else
+						state /*& {
+							buffer = _buffer
+								|> Text.Append( "// NO CHANGE 5 - desired:" )
+								|> Text.Append( desired )
+								|> Text.Append( " - mode:" )
+								|> Text.Append( _mode )
+								|> Text.Append( " - previous:" )
+								|> Text.Append( _prevMode )
+								|> Text.Append( "\n" )
+						} */
+			)
+			stateChange = (
+				if _mode == desired then
+					changeLevel & {
+						prevMode = _mode
+					}
+				else
+					changeLevel & {
+						mode = desired
+						prevMode = _mode
+					}
+			)			
+			adjustComment = (
+				let
+					_mode = stateChange{ mode }
+					_prevMode = stateChange{ prevMode }
+					_buffer = stateChange{ buffer }
+					result = (
+						if _mode == "comment" and _prevMode <> "comment" then
+							stateChange & {
+								buffer = _buffer
+								|> Text.Append("/*\n")
+							}
+						else if _mode <> "comment" and _prevMode == "comment" then
+							stateChange & {
+								buffer = _buffer
+								|> Text.Append("*/\n")
+							}
+						else
+							stateChange
+					)
+				in
+					result
+			)
+		in
+			adjustComment
+	)
+
+	// isDigit
+	isDigit = ( c as character ) => (
+		c >= '0' and c <= '9'
+	)
+
+	// isLowercaseLetter
+	isLowercaseLetter = ( c as character ) => (
+		c >= 'a' and c <= 'z'
+	)
+
+	// transformer for each line
+	transformLine = ( state as record, line as text ) => (
+		let
+			c0 = Text.At( line, 0 )
+			c1 = (
+				if Text.Length( line ) > 1 then
+					Text.At( line, 1 )
+				else
+					0
+			)
+
+			isClause = isDigit(c0) and c1 == '.' and Text.Contains( line, " " )
+			isClauseContent = c0 == '(' and isDigit(c1)
+			isLevel2 = c0 == '(' and isLowercaseLetter(c1) and not (c1 == 'i')
+			isLevel3 = c0 == '(' and c1 == 'i'
+
+			newState =
+				if isClause then
+					let
+						closedState = setState( state, "none" )
+						newState = setState( closedState, "clause" )
+						result = newState & {
+							buffer = newState{ buffer }
+								|> Text.Append( "\tpnz::clause(\n\t\t\"" )
+								|> Text.Append( Text.BeforeDelimiter( line, " " ) )  // clause number
+								|> Text.Append( "\"\n\t\t\"" )
+								|> Text.Append( Text.AfterDelimiter( line, " " ) )	 // title
+								|> Text.Append( "\"\n" )
+						}
+					in
+						result
+				else if isClauseContent then
+					let
+						newState = setState( state, "clause" )
+						result = newState & {
+							buffer = newState{ buffer }
+								|> Text.Append( "\t\t`" )
+								|> Text.Append( Text.AfterDelimiter( line, " " ) )
+								|> Text.Append( "`\n" )
+						}
+					in
+						result
+				else if isLevel2 then
+					let
+						newState = setState( state, "level2" )
+						result = newState & {
+							buffer = newState{ buffer }
+							|> Text.Append( "\t\t\t`" )
+							|> Text.Append( Text.AfterDelimiter( line, " " ) )
+							|> Text.Append( "`\n" )
+						}
+					in
+						result
+				else if isLevel3 then
+					let
+						newState = setState( state, "level3" )
+						result = newState & {
+							buffer = newState{ buffer }
+							|> Text.Append( "\t\t\t\t`" )
+							|> Text.Append( Text.AfterDelimiter( line, " " ) )
+							|> Text.Append( "`\n" )
+						}
+					in
+						result
+				else
+					let
+						newState = setState( state, "comment" )
+						result = newState & {
+							buffer = newState{ buffer }
+								|> Text.Append( "`" )
+								|> Text.Append( line )
+								|> Text.Append( "`" )
+								|> Text.Append( "\n" )
+						}
+					in
+						result
+		in
+			newState
+	)
+
+	// Trim lines and filter blank lines
+	filtered = List.Select(
+		List.Transform(
+			lines,
+			( line ) => Text.Trim( line, " \t\r\n" )
+		)
+		( line ) => Text.Length( line ) > 0
+	)
+
+    // Main transformation function
+    transformed = List.Accumulate(
+		filtered
+		initialState
+		transformLine
+	)
+
+    // Close remaining blocks
+    finalState = setState( transformed, "none" )
+	finalBuffer = (
+		finalState{ buffer }
+		|> Text.Append( "]\n" )
+	)
+in
+	//filtered
+	File.Write( outputFileName, Text.Writer( finalBuffer ) )
+	//Folder.Files( "src/hvcs" )

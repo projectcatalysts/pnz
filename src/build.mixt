@@ -1,13 +1,21 @@
 import [
 	pnz = "pnz.legal.mixt"
 	scp = "hvcs/scp.mixt"
+	common = "hvcs/common.mixt"
 ]
 
-let
-	document = pnz::document( scp )
-	written = File.Write(
+{
+	/*
+	SCP = File.Write(
 		"docs/hvcs/scp.html"
-		Html.FromValue( document )
+		Html.FromValue(
+			pnz::document( "HVCS SCP Procedures", scp )
+		)
+	)*/
+	Common = File.Write(
+		"docs/hvcs/common.html"
+		Html.FromValue(
+			pnz::document( "HVCS Common Procedures", common )
+		)
 	)
-in
-	written
+}

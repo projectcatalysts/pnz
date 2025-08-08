@@ -50,4 +50,23 @@ meta {
 			}
 		} @> content
 	)
+
+	// html::link is used to provide a class name to an HTML element
+	html::link = (href as text, content as any ) => (
+		{
+			html::attributes = {
+				href = href
+			}
+		} @> content
+	)
+
+	// html::link is used to provide a class name to an HTML element
+	html::styled_link = (href as text, className as text, content as any ) => (
+		{
+			html::attributes = {
+				href = href
+				class = className
+			}
+		} @> content
+	)
 }
