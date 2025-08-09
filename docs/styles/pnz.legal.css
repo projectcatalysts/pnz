@@ -94,6 +94,7 @@ h1 {
   display: grid;
   grid-template-columns: 28% 1fr;
   gap: 1rem;
+  margin-top: 1rem;
   margin-bottom: 0rem;
   align-items: start;
   counter-reset: level1;
@@ -216,14 +217,15 @@ h1 {
 .level1 {
   list-style: none;
   padding-left: 0em;
-  margin-top: 0em;
-  margin-bottom: 0.5em;
+  margin-top: 0.0em;
+  margin-bottom: 0.1em;
 }
 
 .level1 > li {
   counter-increment: level1;
   padding-left: var(--indent-level1);
   position: relative;
+  margin-bottom: 1em;
 }
 
 .level1 > li::before {
@@ -240,13 +242,14 @@ h1 {
   counter-reset: level2;
   padding-left: var(--indent-level1);
   margin-top: 0em;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 
 .level2 > li {
   counter-increment: level2;
   padding-left: var(--indent-level2);
   position: relative;
+  margin-bottom: 0.5rem;  /* vertical gap */
 }
 
 .level2 > li::before {
@@ -301,6 +304,20 @@ h1 {
   left: 0;
   width: var(--indent-level3);
   display: inline-block;
+}
+
+.xml-snippet {
+  display: block;
+  font-family: monospace;
+  background: #f7f7f7;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow-x: auto;               /* long lines scroll, don’t wrap */
+  tab-size: 2;
+}
+.xml-snippet div {
+  white-space: pre; /* preserve indentation*/
 }
 
 .pnz-table {

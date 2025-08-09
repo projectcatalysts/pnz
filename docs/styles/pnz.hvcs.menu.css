@@ -97,6 +97,12 @@
       color: inherit;           /* keep text color consistent */
   }
 
+  .structured-address-table tbody tr:nth-child(1),
+  .structured-address-table tbody tr:nth-child(3) {
+	background-color: #666;
+	color: #fff;
+  }
+
   @media (max-width: 600px) {
 	.menu-branches {
 	  flex-direction: column;      /* stack vertically */

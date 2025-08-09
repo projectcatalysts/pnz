@@ -115,8 +115,17 @@ import [
 		html::class( "level3U", content )
 	)
 
+	// pnz.legal::xml creates xml formatted content
+	pnz.legal::xml = (...content as any) => #( code = 
+		html::class( "xml-snippet", content )
+	)
+
 	pnz.legal::table = (content as table) => #( table = 
 		html::class( "pnz-table", content )
+	)
+
+	pnz.legal::styled_table = (className as text, content as table) => #( table = 
+		html::class( $"pnz-table $(className)", content )
 	)
 
 	pnz.legal::definition_table = (...content as list) => #( table = 
